@@ -92,9 +92,9 @@ export default function Home() {
             href="https://wa.me/6283144569056"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 justify-center bg-[#0b2b51] hover:bg-[#3c4d70] text-white rounded-lg px-4 sm:px-5 py-2 font-medium text-xs sm:text-sm tracking-tight transition-[background-color] duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0b2b51] focus-visible:ring-offset-2"
+            className="inline-flex items-center gap-2 justify-center bg-[#25D366] hover:bg-[#20ba5a] text-white rounded-lg px-4 sm:px-5 py-2 font-semibold text-xs sm:text-sm tracking-tight transition-[background-color] duration-150 shadow-[0_2px_8px_rgba(37,211,102,0.2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2"
           >
-            <i className="fa-brands fa-square-whatsapp text-base sm:text-lg"></i>
+            <i className="fa-brands fa-whatsapp text-black text-base sm:text-lg"></i>
             <span>Chat WhatsApp</span>
           </a>
         </div>
@@ -115,7 +115,7 @@ export default function Home() {
 
           <div className="w-full pt-4 border-t border-[#7a7b8f]/20 flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-xs text-[#7a7b8f]">
             <div className="flex items-center gap-2">
-              <i className="fa-brands fa-square-whatsapp text-sm text-[#0b2b51]"></i>
+              <i className="fa-brands fa-whatsapp text-black text-sm"></i>
               <span>Aktivasi 1–5&nbsp;Menit via WhatsApp</span>
             </div>
             <div className="flex items-center gap-2">
@@ -123,7 +123,7 @@ export default function Home() {
               <span>Garansi 24 Jam</span>
             </div>
             <div className="flex items-center gap-2">
-              <i className="fa-solid fa-qrcode text-sm text-[#0b2b51]"></i>
+              <i className="fa-solid fa-qrcode text-black text-sm"></i>
               <span>Pembayaran QRIS</span>
             </div>
           </div>
@@ -180,9 +180,6 @@ export default function Home() {
                         </span>
 
                         <div className="flex-1 min-w-0">
-                          <div className="text-[11px] font-bold text-[#7a7b8f] uppercase tracking-wider mb-1">
-                            {item.category || "Langganan"}
-                          </div>
                           <h2 className="font-display text-2xl sm:text-4xl md:text-5xl uppercase tracking-normal text-[#0b2b51] leading-tight group-hover:text-[#3c4d70] group-focus-within:text-[#3c4d70] transition-colors break-words">
                             {item.name}
                           </h2>
@@ -211,7 +208,7 @@ export default function Home() {
                     <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] group-focus-within:grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-out">
                       <div className="overflow-hidden">
                         <div className="px-6 pb-6 sm:px-8 sm:pb-8 pt-3 border-t border-[#7a7b8f]/15 bg-[#fafbfc]/50">
-                          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
+                          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2 items-end">
                             <div className="md:col-span-2">
                               <div className="text-xs font-bold uppercase tracking-wider text-[#3c4d70] mb-2">
                                 Deskripsi Layanan
@@ -243,44 +240,26 @@ export default function Home() {
                               )}
                             </div>
 
-                            <div className="bg-white p-6 rounded-2xl border border-[#7a7b8f]/20 flex flex-col justify-between gap-6 shadow-sm">
-                              <div>
-                                <div className="text-xs font-bold uppercase tracking-wider text-[#7a7b8f] mb-1">
-                                  Status Pemesanan
+                            <div className="flex flex-col justify-end">
+                              {isOut ? (
+                                <div
+                                  role="status"
+                                  aria-label={`${item.name} stok kosong`}
+                                  className="w-full text-center py-3.5 px-4 rounded-xl bg-[#f8fafc] text-[#7a7b8f]/60 border border-[#7a7b8f]/20 font-medium text-sm cursor-not-allowed select-none"
+                                >
+                                  Stok Sedang Kosong
                                 </div>
-                                <div className="text-lg font-bold text-[#0b2b51] mb-2">
-                                  {isOut ? "Stok Habis Sementara" : "Tersedia & Siap Kirim"}
-                                </div>
-                                <p className="text-xs text-[#7a7b8f] leading-relaxed">
-                                  Proses verifikasi dan aktivasi dilakukan langsung oleh admin setelah transfer pembayaran terkonfirmasi.
-                                </p>
-                                <div className="flex items-center gap-2 text-[11px] text-[#7a7b8f] mt-3">
-                                  <i className="fa-solid fa-qrcode text-xs text-[#0b2b51]"></i>
-                                  <span>Mendukung Pembayaran QRIS Instan</span>
-                                </div>
-                              </div>
-
-                              <div>
-                                {isOut ? (
-                                  <div
-                                    role="status"
-                                    aria-label={`${item.name} stok kosong`}
-                                    className="w-full text-center py-3.5 px-4 rounded-xl bg-[#f8fafc] text-[#7a7b8f]/60 border border-[#7a7b8f]/20 font-medium text-sm cursor-not-allowed select-none"
-                                  >
-                                    Stok Sedang Kosong
-                                  </div>
-                                ) : (
-                                  <a
-                                    href={waUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="w-full inline-flex items-center justify-center gap-2 bg-[#0b2b51] hover:bg-[#3c4d70] text-white font-semibold text-sm px-6 py-3.5 rounded-xl shadow-[0_4px_16px_rgba(11,43,81,0.15)] transition-[background-color] duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3c4d70] focus-visible:ring-offset-2"
-                                  >
-                                    <i className="fa-brands fa-square-whatsapp text-lg"></i>
-                                    <span>Pesan Sekarang via WhatsApp</span>
-                                  </a>
-                                )}
-                              </div>
+                              ) : (
+                                <a
+                                  href={waUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="w-full inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white font-semibold text-sm px-6 py-3.5 rounded-xl shadow-[0_4px_16px_rgba(37,211,102,0.25)] transition-[background-color] duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2"
+                                >
+                                  <i className="fa-brands fa-whatsapp text-black text-lg"></i>
+                                  <span>Pesan Sekarang via WhatsApp</span>
+                                </a>
+                              )}
                             </div>
                           </div>
                         </div>
@@ -307,9 +286,9 @@ export default function Home() {
             href="https://wa.me/6283144569056?text=Halo%20Admin%20keknyaJualan%2C%20saya%20ingin%20tanya-tanya%20seputar%20produk%20digital"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 justify-center bg-[#0b2b51] hover:bg-[#3c4d70] text-white font-semibold text-xs sm:text-sm px-7 py-3.5 rounded-xl transition-[background-color] duration-150 flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0b2b51] focus-visible:ring-offset-2"
+            className="inline-flex items-center gap-2 justify-center bg-[#25D366] hover:bg-[#20ba5a] text-white font-semibold text-xs sm:text-sm px-7 py-3.5 rounded-xl transition-[background-color] duration-150 flex-shrink-0 shadow-[0_4px_16px_rgba(37,211,102,0.25)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2"
           >
-            <i className="fa-brands fa-square-whatsapp text-lg"></i>
+            <i className="fa-brands fa-whatsapp text-black text-lg"></i>
             <span>Konsultasi WhatsApp</span>
           </a>
         </section>
@@ -327,9 +306,9 @@ export default function Home() {
             href="https://wa.me/6283144569056"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 hover:text-[#0b2b51] transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3c4d70]"
+            className="inline-flex items-center gap-1.5 hover:text-[#0b2b51] transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366]"
           >
-            <i className="fa-brands fa-square-whatsapp text-base"></i>
+            <i className="fa-brands fa-whatsapp text-black text-base"></i>
             <span>WhatsApp (+62 831-4456-9056)</span>
           </a>
         </div>
