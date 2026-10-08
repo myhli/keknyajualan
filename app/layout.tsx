@@ -20,7 +20,11 @@ export const metadata: Metadata = {
   title: "keknyaJualan: Katalog Stok Akun & Langganan Digital",
   description: "Katalog stok akun dan langganan digital resmi dengan pemesanan langsung via WhatsApp.",
   icons: {
-    icon: "/avatar.png",
+    icon: [
+      { url: "/icon.png" },
+      { url: "/favicon.ico" },
+    ],
+    apple: "/icon.png",
   },
 };
 
