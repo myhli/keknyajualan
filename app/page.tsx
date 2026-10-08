@@ -113,10 +113,10 @@ export default function Home() {
               />
             </div>
             <div className="flex flex-col">
-              <span className="font-bold text-base tracking-tight text-[#132442] leading-tight">
+              <span className="font-display text-xl tracking-normal text-[#132442] leading-none uppercase">
                 keknya<span className="text-[#bc8909]">Jualan</span>
               </span>
-              <span className="text-[11px] font-medium text-[#637d92] tracking-wide">
+              <span className="text-[11px] font-medium text-[#637d92] tracking-wide mt-0.5">
                 Katalog &amp; Stok Langganan
               </span>
             </div>
@@ -146,7 +146,7 @@ export default function Home() {
             <div className="text-xs font-bold uppercase tracking-widest text-[#bc8909] mb-3">
               KATALOG RESMI
             </div>
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-light tracking-[-0.03em] leading-[1.05] text-[#132442] mb-5 text-balance">
+            <h1 className="font-display text-4xl sm:text-6xl md:text-7xl uppercase tracking-normal leading-[0.98] text-[#132442] mb-5 text-balance">
               Langganan Akun Digital &amp; AI
             </h1>
             <p className="text-base sm:text-lg text-[#132442]/80 leading-relaxed font-normal max-w-2xl">
@@ -173,7 +173,7 @@ export default function Home() {
 
         <section id="catalog" className="mb-14 scroll-mt-12">
           <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-6 pb-3 border-b border-[#637d92]/20 gap-2">
-            <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-[#132442] text-balance">
+            <h2 className="font-display text-2xl sm:text-3xl uppercase tracking-normal text-[#132442] text-balance">
               Daftar Stok Tersedia
             </h2>
             <p className="text-xs text-[#637d92] font-medium">
@@ -272,7 +272,7 @@ export default function Home() {
 
         <section className="bg-[#fafbfc] rounded-2xl p-6 sm:p-8 border border-[#637d92]/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
           <div className="max-w-xl">
-            <h3 className="text-base sm:text-lg font-bold tracking-tight text-[#132442] mb-1 text-balance">
+            <h3 className="font-display text-xl sm:text-2xl uppercase tracking-normal text-[#132442] mb-1.5 text-balance">
               Kebutuhan Langganan Lain atau Akun Tim?
             </h3>
             <p className="text-xs sm:text-sm text-[#637d92] leading-relaxed font-normal">
@@ -294,7 +294,7 @@ export default function Home() {
       <footer className="w-full py-8 border-t border-[#637d92]/20 mt-12 bg-white">
         <div className="max-w-[1120px] mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#637d92] font-medium">
           <div className="flex items-center gap-2">
-            <span className="font-bold text-[#132442]">keknyaJualan</span>
+            <span className="font-display text-base uppercase tracking-normal text-[#132442]">keknyaJualan</span>
             <span>·</span>
             <span>Katalog &amp; Stok Terverifikasi</span>
           </div>

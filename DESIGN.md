@@ -15,8 +15,8 @@
 - Warm Neutral / Soft Borders: Lunar Beige `#e8d1b6`
 
 ## Typography & Hierarchy
-- Font Family: Plus Jakarta Sans
-- Display / Headings: Light to bold uppercase typography with controlled tracking, balanced line breaks (`text-balance`).
+- Display Font: Anton (Display / Headings: bold condensed uppercase typography, balanced line breaks `text-balance`)
+- Text Font: Manrope (Body copy, specifications, UI text, labels)
 - Metadata: Clean tabular figures (`tabular-nums`), uppercase micro-labels with restrained tracking.
 - Zero decorative glyphs: No sparkles (`✦`), no kaomoji, no decorative arrows (`→`).
 

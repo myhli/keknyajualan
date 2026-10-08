@@ -1,9 +1,16 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Anton, Manrope } from "next/font/google";
 import "./globals.css";
 
-const plusJakartaSans = Plus_Jakarta_Sans({
-  variable: "--font-plus-jakarta-sans",
+const anton = Anton({
+  variable: "--font-anton",
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
+});
+
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800"],
   display: "swap",
@@ -25,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="id" className="scroll-smooth motion-reduce:scroll-auto">
       <body
-        className={`${plusJakartaSans.variable} font-sans min-h-screen bg-white text-[#132442] antialiased selection:bg-[#bc8909] selection:text-white`}
+        className={`${anton.variable} ${manrope.variable} font-sans min-h-screen bg-white text-[#132442] antialiased selection:bg-[#bc8909] selection:text-white`}
       >
         {children}
       </body>
