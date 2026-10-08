@@ -125,14 +125,14 @@ export default function Home() {
 
       <main className="max-w-[1120px] w-full mx-auto px-4 sm:px-6 py-8 sm:py-12 flex-1 flex flex-col justify-start">
         <section className="mb-10 sm:mb-14 flex flex-col items-center sm:items-start">
-          <div className="w-48 sm:w-60 md:w-64 rounded-3xl bg-[#faf6ea] border border-[#3c4d70]/20 overflow-hidden shadow-sm p-3 mb-6 transition-transform duration-200 hover:scale-[1.02]">
+          <div className="w-64 sm:w-80 md:w-96 mb-6 transition-transform duration-300 hover:scale-[1.02]">
             <Image
               src="/logo.png"
               alt="keknyaJualan Logo"
-              width={280}
-              height={280}
+              width={384}
+              height={384}
               priority
-              className="w-full h-auto object-contain rounded-2xl"
+              className="w-full h-auto object-contain"
             />
           </div>
 
