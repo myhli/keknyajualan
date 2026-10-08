@@ -10,7 +10,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "keknyaJualan 挑 — Verified Digital Catalog & Stock",
+  title: "keknyaJualan ✦ — Verified Digital Catalog & Stock",
   description: "Official stock catalog & direct WhatsApp ordering for AI and creative subscriptions.",
   icons: {
     icon: "/avatar.png",
@@ -25,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="id" className="scroll-smooth">
       <body
-        className={`${plusJakartaSans.variable} font-sans min-h-screen bg-[#f8f3e9] text-[#1a1a1a] antialiased selection:bg-[#ff3333] selection:text-white`}
+        className={`${plusJakartaSans.variable} font-sans min-h-screen bg-[#160029] text-[#F5E9E2] antialiased selection:bg-[#D44D5C] selection:text-[#F5E9E2]`}
       >
         {children}
       </body>
