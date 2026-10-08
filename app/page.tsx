@@ -100,20 +100,10 @@ export default function Home() {
         <div className="max-w-[1120px] mx-auto px-4 sm:px-6 flex items-center justify-between">
           <a
             href="#catalog"
-            className="inline-flex items-center gap-3.5 text-decoration-none group select-none rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3c4d70] focus-visible:ring-offset-2"
+            className="inline-flex items-center text-decoration-none group select-none rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3c4d70] focus-visible:ring-offset-2"
           >
-            <div className="w-12 h-12 rounded-xl bg-[#faf6ea] border border-[#3c4d70]/20 overflow-hidden flex items-center justify-center p-0.5 shadow-sm transition-transform duration-200 group-hover:scale-105">
-              <Image
-                src="/avatar.png"
-                alt="keknyaJualan Logo"
-                width={48}
-                height={48}
-                priority
-                className="w-full h-full object-cover rounded-lg"
-              />
-            </div>
             <div className="flex flex-col">
-              <span className="font-display text-xl sm:text-2xl tracking-normal text-[#0b2b51] leading-none uppercase">
+              <span className="font-display text-2xl sm:text-3xl tracking-normal text-[#0b2b51] leading-none uppercase">
                 keknya<span className="text-[#3c4d70]">Jualan</span>
               </span>
               <span className="text-[11px] font-medium text-[#7a7b8f] tracking-wide mt-1">
@@ -122,40 +112,31 @@ export default function Home() {
             </div>
           </a>
 
-          <div className="flex items-center gap-3">
-            <div className="hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#f8fafc] border border-[#7a7b8f]/25 text-xs font-semibold text-[#0b2b51]">
-              <span className="w-2 h-2 rounded-full bg-[#3c4d70]"></span>
-              <span>Pembaruan 07:00&nbsp;WIB</span>
-            </div>
-
-            <a
-              href="https://wa.me/6283144569056"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center bg-[#0b2b51] hover:bg-[#3c4d70] text-white rounded-lg px-4 sm:px-5 py-2 font-medium text-xs sm:text-sm tracking-tight transition-[background-color] duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0b2b51] focus-visible:ring-offset-2"
-            >
-              Chat WhatsApp
-            </a>
-          </div>
+          <a
+            href="https://wa.me/6283144569056"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center bg-[#0b2b51] hover:bg-[#3c4d70] text-white rounded-lg px-4 sm:px-5 py-2 font-medium text-xs sm:text-sm tracking-tight transition-[background-color] duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0b2b51] focus-visible:ring-offset-2"
+          >
+            Chat WhatsApp
+          </a>
         </div>
       </header>
 
-      <main className="max-w-[1120px] w-full mx-auto px-4 sm:px-6 py-10 sm:py-16 flex-1 flex flex-col justify-start">
-        <section className="mb-12 sm:mb-16">
-          <div className="max-w-3xl">
-            <div className="text-xs font-bold uppercase tracking-widest text-[#3c4d70] mb-3">
-              KATALOG RESMI
-            </div>
-            <h1 className="font-display text-4xl sm:text-6xl md:text-7xl uppercase tracking-normal leading-[0.96] text-[#0b2b51] mb-5 text-balance">
-              Langganan Akun Digital &amp; AI
-            </h1>
-            <p className="text-base sm:text-lg text-[#0b2b51]/80 leading-relaxed font-normal max-w-2xl">
-              Inventaris lisensi Google AI Pro, Gemini Advanced, dan Canva Pro.
-              Stok disinkronkan harian dari Telegram resmi untuk proses order langsung via WhatsApp tanpa antre.
-            </p>
+      <main className="max-w-[1120px] w-full mx-auto px-4 sm:px-6 py-8 sm:py-12 flex-1 flex flex-col justify-start">
+        <section className="mb-10 sm:mb-14 flex flex-col items-center sm:items-start">
+          <div className="w-48 sm:w-60 md:w-64 rounded-3xl bg-[#faf6ea] border border-[#3c4d70]/20 overflow-hidden shadow-sm p-3 mb-6 transition-transform duration-200 hover:scale-[1.02]">
+            <Image
+              src="/logo.png"
+              alt="keknyaJualan Logo"
+              width={280}
+              height={280}
+              priority
+              className="w-full h-auto object-contain rounded-2xl"
+            />
           </div>
 
-          <div className="mt-8 pt-6 border-t border-[#7a7b8f]/20 grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs text-[#7a7b8f]">
+          <div className="w-full pt-4 border-t border-[#7a7b8f]/20 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-[#7a7b8f]">
             <div className="flex items-center gap-2.5">
               <span className="w-1.5 h-1.5 rounded-full bg-[#3c4d70]"></span>
               <span>Aktivasi 1–5&nbsp;Menit via WhatsApp</span>
@@ -174,16 +155,13 @@ export default function Home() {
         <section id="catalog" className="mb-14 scroll-mt-20">
           <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-8 pb-3 border-b border-[#7a7b8f]/20 gap-2">
             <div>
-              <h2 className="font-display text-2xl sm:text-4xl uppercase tracking-normal text-[#0b2b51] text-balance">
+              <h1 className="font-display text-2xl sm:text-4xl uppercase tracking-normal text-[#0b2b51] text-balance">
                 Daftar Produk &amp; Stok
-              </h2>
+              </h1>
               <p className="text-xs text-[#7a7b8f] mt-1">
                 Arahkan kursor atau sentuh produk untuk melihat rincian paket dan pemesanan WhatsApp
               </p>
             </div>
-            <p className="text-xs text-[#7a7b8f] font-medium">
-              Data sinkronisasi otomatis 07:00&nbsp;WIB
-            </p>
           </div>
 
           <div className="flex flex-col gap-5">
@@ -226,9 +204,9 @@ export default function Home() {
                           <div className="text-[11px] font-bold text-[#7a7b8f] uppercase tracking-wider mb-1">
                             {details.category}
                           </div>
-                          <h3 className="font-display text-2xl sm:text-4xl md:text-5xl uppercase tracking-normal text-[#0b2b51] leading-tight group-hover:text-[#3c4d70] group-focus-within:text-[#3c4d70] transition-colors break-words">
+                          <h2 className="font-display text-2xl sm:text-4xl md:text-5xl uppercase tracking-normal text-[#0b2b51] leading-tight group-hover:text-[#3c4d70] group-focus-within:text-[#3c4d70] transition-colors break-words">
                             {item}
-                          </h3>
+                          </h2>
                         </div>
                       </div>
 
@@ -323,9 +301,9 @@ export default function Home() {
 
         <section className="bg-[#fafbfc] rounded-2xl p-6 sm:p-10 border border-[#7a7b8f]/25 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 shadow-sm">
           <div className="max-w-xl">
-            <h3 className="font-display text-2xl sm:text-3xl uppercase tracking-normal text-[#0b2b51] mb-2 text-balance">
+            <h2 className="font-display text-2xl sm:text-3xl uppercase tracking-normal text-[#0b2b51] mb-2 text-balance">
               Kebutuhan Langganan Lain atau Akun Tim?
-            </h3>
+            </h2>
             <p className="text-xs sm:text-sm text-[#7a7b8f] leading-relaxed font-normal">
               Kami juga melayani permintaan akun khusus, lisensi perangkat lunak tambahan, dan paket langganan tim. Hubungi kami langsung melalui WhatsApp untuk konsultasi cepat.
             </p>
@@ -350,18 +328,14 @@ export default function Home() {
             <span>Katalog &amp; Stok Terverifikasi</span>
           </div>
 
-          <div className="flex items-center gap-3">
-            <a
-              href="https://wa.me/6283144569056"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-[#0b2b51] transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3c4d70]"
-            >
-              WhatsApp (+62 831-4456-9056)
-            </a>
-            <span>·</span>
-            <span>Sinkronisasi 07:00&nbsp;WIB</span>
-          </div>
+          <a
+            href="https://wa.me/6283144569056"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-[#0b2b51] transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3c4d70]"
+          >
+            WhatsApp (+62 831-4456-9056)
+          </a>
         </div>
       </footer>
     </div>
