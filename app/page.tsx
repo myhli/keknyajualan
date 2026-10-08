@@ -60,7 +60,6 @@ function getProducts() {
   });
 }
 
-
 export default function Home() {
   const products = getProducts();
 
@@ -93,9 +92,10 @@ export default function Home() {
             href="https://wa.me/6283144569056"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center bg-[#0b2b51] hover:bg-[#3c4d70] text-white rounded-lg px-4 sm:px-5 py-2 font-medium text-xs sm:text-sm tracking-tight transition-[background-color] duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0b2b51] focus-visible:ring-offset-2"
+            className="inline-flex items-center gap-2 justify-center bg-[#0b2b51] hover:bg-[#3c4d70] text-white rounded-lg px-4 sm:px-5 py-2 font-medium text-xs sm:text-sm tracking-tight transition-[background-color] duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0b2b51] focus-visible:ring-offset-2"
           >
-            Chat WhatsApp
+            <i className="fa-brands fa-square-whatsapp text-base sm:text-lg"></i>
+            <span>Chat WhatsApp</span>
           </a>
         </div>
       </header>
@@ -115,15 +115,15 @@ export default function Home() {
 
           <div className="w-full pt-4 border-t border-[#7a7b8f]/20 flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-xs text-[#7a7b8f]">
             <div className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#3c4d70]"></span>
+              <i className="fa-brands fa-square-whatsapp text-sm text-[#0b2b51]"></i>
               <span>Aktivasi 1–5&nbsp;Menit via WhatsApp</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-[#3c4d70]"></span>
-              <span>Garansi Penggantian Penuh</span>
+              <span>Garansi 24 Jam</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#3c4d70]"></span>
+              <i className="fa-solid fa-qrcode text-sm text-[#0b2b51]"></i>
               <span>Pembayaran QRIS</span>
             </div>
           </div>
@@ -254,6 +254,10 @@ export default function Home() {
                                 <p className="text-xs text-[#7a7b8f] leading-relaxed">
                                   Proses verifikasi dan aktivasi dilakukan langsung oleh admin setelah transfer pembayaran terkonfirmasi.
                                 </p>
+                                <div className="flex items-center gap-2 text-[11px] text-[#7a7b8f] mt-3">
+                                  <i className="fa-solid fa-qrcode text-xs text-[#0b2b51]"></i>
+                                  <span>Mendukung Pembayaran QRIS Instan</span>
+                                </div>
                               </div>
 
                               <div>
@@ -270,9 +274,10 @@ export default function Home() {
                                     href={waUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="w-full inline-flex items-center justify-center bg-[#0b2b51] hover:bg-[#3c4d70] text-white font-semibold text-sm px-6 py-3.5 rounded-xl shadow-[0_4px_16px_rgba(11,43,81,0.15)] transition-[background-color] duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3c4d70] focus-visible:ring-offset-2"
+                                    className="w-full inline-flex items-center justify-center gap-2 bg-[#0b2b51] hover:bg-[#3c4d70] text-white font-semibold text-sm px-6 py-3.5 rounded-xl shadow-[0_4px_16px_rgba(11,43,81,0.15)] transition-[background-color] duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3c4d70] focus-visible:ring-offset-2"
                                   >
-                                    Pesan Sekarang via WhatsApp
+                                    <i className="fa-brands fa-square-whatsapp text-lg"></i>
+                                    <span>Pesan Sekarang via WhatsApp</span>
                                   </a>
                                 )}
                               </div>
@@ -302,9 +307,10 @@ export default function Home() {
             href="https://wa.me/6283144569056?text=Halo%20Admin%20keknyaJualan%2C%20saya%20ingin%20tanya-tanya%20seputar%20produk%20digital"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center bg-[#0b2b51] hover:bg-[#3c4d70] text-white font-semibold text-xs sm:text-sm px-7 py-3.5 rounded-xl transition-[background-color] duration-150 flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0b2b51] focus-visible:ring-offset-2"
+            className="inline-flex items-center gap-2 justify-center bg-[#0b2b51] hover:bg-[#3c4d70] text-white font-semibold text-xs sm:text-sm px-7 py-3.5 rounded-xl transition-[background-color] duration-150 flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0b2b51] focus-visible:ring-offset-2"
           >
-            Konsultasi WhatsApp
+            <i className="fa-brands fa-square-whatsapp text-lg"></i>
+            <span>Konsultasi WhatsApp</span>
           </a>
         </section>
       </main>
@@ -321,9 +327,10 @@ export default function Home() {
             href="https://wa.me/6283144569056"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-[#0b2b51] transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3c4d70]"
+            className="inline-flex items-center gap-1.5 hover:text-[#0b2b51] transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3c4d70]"
           >
-            WhatsApp (+62 831-4456-9056)
+            <i className="fa-brands fa-square-whatsapp text-base"></i>
+            <span>WhatsApp (+62 831-4456-9056)</span>
           </a>
         </div>
       </footer>

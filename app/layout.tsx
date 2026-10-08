@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Anton, Manrope } from "next/font/google";
 import "./globals.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 const anton = Anton({
   variable: "--font-anton",
