@@ -1,22 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const plusJakartaSans = Plus_Jakarta_Sans({
+  variable: "--font-plus-jakarta-sans",
   subsets: ["latin"],
-  display: "swap",
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "keknyaJualan — Official Digital Store & Live Inventory",
-  description: "Katalog lisensi resmi AI & productivity software dengan pembaruan stok live dan pemesanan WhatsApp.",
+  title: "keknyaJualan 挑 — Verified Digital Catalog & Stock",
+  description: "Official stock catalog & direct WhatsApp ordering for AI and creative subscriptions.",
   icons: {
     icon: "/avatar.png",
   },
@@ -28,9 +23,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="id" className="dark scroll-smooth">
+    <html lang="id" className="scroll-smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} font-sans min-h-screen bg-[#090a0f] text-[#f4f4f6] antialiased selection:bg-emerald-500 selection:text-black`}
+        className={`${plusJakartaSans.variable} font-sans min-h-screen bg-[#f8f3e9] text-[#1a1a1a] antialiased selection:bg-[#ff3333] selection:text-white`}
       >
         {children}
       </body>
