@@ -19,13 +19,6 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   title: "keknyaJualan",
   description: "Jual akun / Subscription / Family Subscription.",
-  icons: {
-    icon: [
-      { url: "/icon.png" },
-      { url: "/favicon.ico" },
-    ],
-    apple: "/icon.png",
-  },
 };
 
 export default function RootLayout({
