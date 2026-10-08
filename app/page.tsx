@@ -124,28 +124,28 @@ export default function Home() {
       </header>
 
       <main className="max-w-[1120px] w-full mx-auto px-4 sm:px-6 py-8 sm:py-12 flex-1 flex flex-col justify-start">
-        <section className="mb-10 sm:mb-14 flex flex-col items-center sm:items-start">
-          <div className="w-64 sm:w-80 md:w-96 mb-6 transition-transform duration-300 hover:scale-[1.02]">
+        <section className="mb-10 sm:mb-14 flex flex-col items-center text-center">
+          <div className="w-64 sm:w-80 md:w-96 mb-6 transition-transform duration-300 hover:scale-[1.02] mx-auto">
             <Image
               src="/logo.png"
               alt="keknyaJualan Logo"
               width={384}
               height={384}
               priority
-              className="w-full h-auto object-contain"
+              className="w-full h-auto object-contain mx-auto"
             />
           </div>
 
-          <div className="w-full pt-4 border-t border-[#7a7b8f]/20 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-[#7a7b8f]">
-            <div className="flex items-center gap-2.5">
+          <div className="w-full pt-4 border-t border-[#7a7b8f]/20 flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-xs text-[#7a7b8f]">
+            <div className="flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-[#3c4d70]"></span>
               <span>Aktivasi 1–5&nbsp;Menit via WhatsApp</span>
             </div>
-            <div className="flex items-center gap-2.5">
+            <div className="flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-[#3c4d70]"></span>
               <span>Garansi Penggantian Penuh</span>
             </div>
-            <div className="flex items-center gap-2.5">
+            <div className="flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-[#3c4d70]"></span>
               <span>Pembayaran QRIS &amp; Transfer Bank</span>
             </div>
@@ -153,15 +153,13 @@ export default function Home() {
         </section>
 
         <section id="catalog" className="mb-14 scroll-mt-20">
-          <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-8 pb-3 border-b border-[#7a7b8f]/20 gap-2">
-            <div>
-              <h1 className="font-display text-2xl sm:text-4xl uppercase tracking-normal text-[#0b2b51] text-balance">
-                Daftar Produk &amp; Stok
-              </h1>
-              <p className="text-xs text-[#7a7b8f] mt-1">
-                Arahkan kursor atau sentuh produk untuk melihat rincian paket dan pemesanan WhatsApp
-              </p>
-            </div>
+          <div className="text-center mb-8 pb-4 border-b border-[#7a7b8f]/20">
+            <h1 className="font-display text-2xl sm:text-4xl uppercase tracking-normal text-[#0b2b51] text-balance">
+              Daftar Produk &amp; Stok
+            </h1>
+            <p className="text-xs text-[#7a7b8f] mt-1">
+              Arahkan kursor atau sentuh produk untuk melihat rincian paket dan pemesanan WhatsApp
+            </p>
           </div>
 
           <div className="flex flex-col gap-5">
