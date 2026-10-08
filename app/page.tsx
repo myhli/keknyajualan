@@ -15,11 +15,7 @@ type StockData = Record<string, string>;
 function getStock(): StockData {
   const filePath = path.join(process.cwd(), "stock.json");
   if (!fs.existsSync(filePath)) {
-    return {
-      "Google AI PRO 18 Bulan": "12",
-      "Gemini Advanced": "Ready",
-      "Canva Pro": "Habis",
-    };
+    return {};
   }
   try {
     return JSON.parse(fs.readFileSync(filePath, "utf-8"));
@@ -47,88 +43,22 @@ function getProducts() {
     }
   }
 
-  if (!baseProducts.length) {
-    baseProducts = [
-      {
-        name: "Google AI PRO 18 Bulan",
-        category: "Google One AI Pro",
-        desc: "Langganan personal resmi berdurasi 18 bulan penuh dengan kapasitas 2TB Google One Cloud dan akses model Gemini Ultra.",
-        specs: [
-          "Akses Gemini 1.5 Pro dan Ultra",
-          "Kapasitas 2TB Google One Storage",
-          "Garansi akun penuh 18 bulan",
-          "Akun privat personal",
-        ],
-      },
-      {
-        name: "Gemini Advanced",
-        category: "Gemini Workspace",
-        desc: "Akses komputasi penalaran model tingkat lanjut untuk pemrograman, sintesis dokumen panjang, dan integrasi Google Workspace.",
-        specs: [
-          "Fitur penalaran tingkat lanjut",
-          "Konteks dokumen panjang",
-          "Cloud storage 2TB",
-          "Prioritas server berkecepatan tinggi",
-        ],
-      },
-      {
-        name: "Canva Pro",
-        category: "Canva Design Suite",
-        desc: "Paket lengkap kreator konten dengan akses ke 100M+ aset visual, background remover instan, dan rangkaian Magic Studio.",
-        specs: [
-          "100M+ foto dan elemen grafis premium",
-          "Penghapus latar belakang otomatis",
-          "Alat kreasi Magic Studio",
-          "Ekspor desain resolusi tinggi",
-        ],
-      },
-    ];
-  }
-
-  const productMap = new Map<string, ProductInput>();
-  baseProducts.forEach((p) => {
-    productMap.set(p.name.toLowerCase().trim(), p);
-  });
-
-  const merged: (ProductInput & { code: string; status: string })[] = [];
-  let index = 1;
-
-  baseProducts.forEach((prod) => {
+  return baseProducts.map((prod, idx) => {
     const matchedStock =
       liveStock[prod.name] ||
       Object.entries(liveStock).find(
         ([k]) => k.toLowerCase().trim() === prod.name.toLowerCase().trim()
       )?.[1];
     const status = matchedStock || prod.status || "Ready";
-    const code = String(index++).padStart(2, "0");
-    merged.push({
+    const code = String(idx + 1).padStart(2, "0");
+    return {
       ...prod,
       code,
       status,
-    });
+    };
   });
-
-  Object.entries(liveStock).forEach(([itemName, statusVal]) => {
-    if (!productMap.has(itemName.toLowerCase().trim())) {
-      const code = String(index++).padStart(2, "0");
-      merged.push({
-        name: itemName,
-        category: "Langganan Digital",
-        desc: `Lisensi dan aktivasi resmi untuk ${itemName} dengan penyerahan langsung via WhatsApp.`,
-        specs: [
-          "Aktivasi 1–5 Menit",
-          "Akun Terverifikasi",
-          "Garansi Penuh",
-          "Bantuan Teknis",
-        ],
-        code,
-        status: statusVal,
-      });
-    }
-  });
-
-  return merged;
 }
+
 
 export default function Home() {
   const products = getProducts();
