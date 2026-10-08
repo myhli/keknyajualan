@@ -124,7 +124,7 @@ export default function Home() {
             </div>
             <div className="flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-[#3c4d70]"></span>
-              <span>Pembayaran QRIS &amp; Transfer Bank</span>
+              <span>Pembayaran QRIS</span>
             </div>
           </div>
         </section>
