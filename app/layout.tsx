@@ -32,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="id" className="scroll-smooth motion-reduce:scroll-auto">
       <body
-        className={`${anton.variable} ${manrope.variable} font-sans min-h-screen bg-white text-[#132442] antialiased selection:bg-[#bc8909] selection:text-white`}
+        className={`${anton.variable} ${manrope.variable} font-sans min-h-screen bg-white text-[#0b2b51] antialiased selection:bg-[#c5a8a1] selection:text-[#0b2b51]`}
       >
         {children}
       </body>

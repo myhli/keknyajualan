@@ -2,38 +2,38 @@
 
 :root {
   --white: #ffffff;
-  --royal-night: #1a3a63;
-  --deep-navy: #132442;
-  --foggy-blue: #637d92;
-  --starburst-gold: #bc8909;
-  --starburst-gold-hover: #a57706;
-  --lunar-beige: #e8d1b6;
+  --shadow-navy: #0b2b51;
+  --misty-indigo: #3c4d70;
+  --soft-graphite: #7a7b8f;
+  --slate-mauve: #807073;
+  --warm-wood: #c5a8a1;
+  --warm-wood-hover: #b5958d;
 }
 
 @theme inline {
-  --color-royal-night: #1a3a63;
-  --color-deep-navy: #132442;
-  --color-foggy-blue: #637d92;
-  --color-starburst-gold: #bc8909;
-  --color-starburst-gold-hover: #a57706;
-  --color-lunar-beige: #e8d1b6;
+  --color-shadow-navy: #0b2b51;
+  --color-misty-indigo: #3c4d70;
+  --color-soft-graphite: #7a7b8f;
+  --color-slate-mauve: #807073;
+  --color-warm-wood: #c5a8a1;
+  --color-warm-wood-hover: #b5958d;
   --font-display: var(--font-anton), Impact, sans-serif;
   --font-sans: var(--font-manrope), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 body {
   background-color: #ffffff;
-  color: #132442;
+  color: #0b2b51;
   font-family: var(--font-manrope), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 ::selection {
-  background-color: #bc8909;
-  color: #ffffff;
+  background-color: #c5a8a1;
+  color: #0b2b51;
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -41,9 +41,18 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #bc8909;
+  background-color: #7a7b8f;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #a57706;
+  background-color: #3c4d70;
+}
+
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+details > summary {
+  list-style: none;
 }

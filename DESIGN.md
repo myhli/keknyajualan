@@ -5,14 +5,17 @@
 - Character: Curated digital goods atelier, editorial catalog, transparent inventory kiosk.
 - Inspiration: Leonhart portfolio (`https://leonhart.vercel.app/`) — typographic confidence, structured metadata, authentic craftsmanship, zero generic marketing slop.
 
-## Color Palette (Galaxy Polaroid on White)
+## Color Palette (黎明の教会 / Dawn Church on White)
 - Canvas: Pure White `#ffffff`
-- Surface: Crisp White `#ffffff` with subtle Lunar Beige `#fcfaf7` accents
-- Primary Text / Deep Neutral: Deep Navy `#132442`
-- Secondary Brand: Royal Night `#1a3a63`
-- Muted Metadata / Subtle Lines: Foggy Blue `#637d92`
-- Accent / Highlights: Starburst Gold `#bc8909` (Hover `#a57706`)
-- Warm Neutral / Soft Borders: Lunar Beige `#e8d1b6`
+- Primary Dark: Shadow Navy `#0b2b51` (Deepest tone for text, primary CTA buttons, high-contrast borders)
+- Secondary Tone: Misty Indigo `#3c4d70` (Secondary headers, active states, focus rings)
+- Muted Metadata & Subtle Lines: Soft Graphite `#7a7b8f` (Muted labels, time indicators, borders)
+- Earth Neutral: Slate Mauve `#807073` (Subtle divider and tone)
+- Warm Accent: Warm Wood `#c5a8a1` (Soft almond blush wood tone for highlights, tags, and selection)
+
+## Layout & Interaction
+- Product Presentation: Full-width vertical stack with prominent typographic scale.
+- Interactive Disclosure: Accessible HTML `<details>` and `<summary>` accordion. Descriptions and specifications remain collapsed until clicked, keeping initial scan friction low and revealing actionable WhatsApp checkout upon expansion.
 
 ## Typography & Hierarchy
 - Display Font: Anton (Display / Headings: bold condensed uppercase typography, balanced line breaks `text-balance`)
