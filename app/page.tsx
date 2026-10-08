@@ -103,7 +103,7 @@ export default function Home() {
         <section className="mb-10 sm:mb-14 flex flex-col items-center text-center">
           <div className="w-64 sm:w-80 md:w-96 mb-6 transition-transform duration-300 hover:scale-[1.02] mx-auto">
             <Image
-              src="/logo.png"
+              src="/avatar.png"
               alt="keknyaJualan Logo"
               width={384}
               height={384}
