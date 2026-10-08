@@ -1,16 +1,22 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Sans } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const ibmPlexSans = IBM_Plex_Sans({
-  variable: "--font-ibm-plex-sans",
+const geistSans = Geist({
+  variable: "--font-geist-sans",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "keknyaJualan Official: Instagram | Linktree",
-  description: "keknyaJualan Official catalog and ordering portal",
+  title: "keknyaJualan — Official Digital Store & Live Inventory",
+  description: "Katalog lisensi resmi AI & productivity software dengan pembaruan stok live dan pemesanan WhatsApp.",
   icons: {
     icon: "/avatar.png",
   },
@@ -22,9 +28,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="id">
+    <html lang="id" className="dark scroll-smooth">
       <body
-        className={`${ibmPlexSans.variable} font-sans min-h-screen bg-[#A6BDC0] text-[#010101] antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} font-sans min-h-screen bg-[#090a0f] text-[#f4f4f6] antialiased selection:bg-emerald-500 selection:text-black`}
       >
         {children}
       </body>
