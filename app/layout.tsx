@@ -25,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="id" className="scroll-smooth">
       <body
-        className={`${plusJakartaSans.variable} font-sans min-h-screen bg-[#160029] text-[#F5E9E2] antialiased selection:bg-[#D44D5C] selection:text-[#F5E9E2]`}
+        className={`${plusJakartaSans.variable} font-sans min-h-screen bg-white text-[#132442] antialiased selection:bg-[#bc8909] selection:text-white`}
       >
         {children}
       </body>
