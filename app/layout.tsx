@@ -10,8 +10,8 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "keknyaJualan ✦ — Verified Digital Catalog & Stock",
-  description: "Official stock catalog & direct WhatsApp ordering for AI and creative subscriptions.",
+  title: "keknyaJualan: Katalog Stok Akun & Langganan Digital",
+  description: "Katalog stok akun dan langganan digital resmi dengan pemesanan langsung via WhatsApp.",
   icons: {
     icon: "/avatar.png",
   },
