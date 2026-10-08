@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import Image from "next/image";
+import { WhatsAppTrigger } from "./whatsapp-contact";
 
 type ProductInput = {
   name: string;
@@ -23,11 +24,6 @@ function getStock(): StockData {
   } catch {
     return {};
   }
-}
-
-function getOrderUrl(item: string): string {
-  const message = `Halo, Saya mau membeli ${item}. Apakah stock tersedia?`;
-  return `https://wa.me/6283144569056?text=${encodeURIComponent(message)}`;
 }
 
 function getProducts() {
@@ -82,21 +78,16 @@ export default function Home() {
               <span className="font-display text-2xl sm:text-3xl tracking-normal text-[#0b2b51] leading-none uppercase">
                 keknya<span className="text-[#3c4d70]">Jualan</span>
               </span>
-              <span className="text-[11px] font-medium text-[#7a7b8f] tracking-wide mt-1">
-                Katalog &amp; Stok Langganan
-              </span>
             </div>
           </a>
 
-          <a
-            href="https://wa.me/6283144569056"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 justify-center bg-[#0b2b51] hover:bg-[#3c4d70] text-white rounded-lg px-4 sm:px-5 py-2 font-medium text-xs sm:text-sm tracking-tight transition-[background-color] duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0b2b51] focus-visible:ring-offset-2"
+          <WhatsAppTrigger
+            message="Halo Admin keknyaJualan, saya ingin tanya-tanya seputar produk digital"
+            className="inline-flex items-center gap-2 justify-center bg-[#0b2b51] hover:bg-[#3c4d70] text-white rounded-lg px-4 sm:px-5 py-2 font-medium text-xs sm:text-sm tracking-tight transition-[background-color] duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0b2b51] focus-visible:ring-offset-2 cursor-pointer"
           >
             <i className="fa-brands fa-whatsapp text-base sm:text-lg"></i>
             <span>Chat WhatsApp</span>
-          </a>
+          </WhatsAppTrigger>
         </div>
       </header>
 
@@ -154,7 +145,6 @@ export default function Home() {
                   normalized === "0" ||
                   normalized === "out of stock";
 
-                const waUrl = getOrderUrl(item.name);
                 const specs = item.specs || [
                   "Aktivasi 1–5 Menit",
                   "Akun Terverifikasi",
@@ -207,58 +197,63 @@ export default function Home() {
 
                     <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] group-focus-within:grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-out">
                       <div className="overflow-hidden">
-                        <div className="px-6 pb-6 sm:px-8 sm:pb-8 pt-3 border-t border-[#7a7b8f]/15 bg-[#fafbfc]/50">
-                          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2 items-end">
-                            <div className="md:col-span-2">
-                              <div className="text-xs font-bold uppercase tracking-wider text-[#3c4d70] mb-2">
-                                Deskripsi Layanan
-                              </div>
-                              <p className="text-sm sm:text-base text-[#0b2b51]/85 leading-relaxed mb-6 font-normal">
-                                {item.desc || `Paket langganan resmi ${item.name} dengan aktivasi instan.`}
-                              </p>
+                        <div className="px-6 pb-6 sm:px-8 sm:pb-8 pt-4 border-t border-[#7a7b8f]/15 bg-[#fafbfc]/40">
+                          <div className="mb-6">
+                            <div className="text-xs font-bold uppercase tracking-wider text-[#3c4d70] mb-2">
+                              Deskripsi Layanan
+                            </div>
+                            <p className="text-sm sm:text-base text-[#0b2b51]/85 leading-relaxed font-normal">
+                              {item.desc || `Paket langganan resmi ${item.name} dengan aktivasi instan.`}
+                            </p>
+                          </div>
 
-                              <div className="text-xs font-bold uppercase tracking-wider text-[#3c4d70] mb-3">
-                                Spesifikasi &amp; Keunggulan Akun
-                              </div>
-                              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs sm:text-sm text-[#0b2b51]/90 font-medium">
-                                {specs.map((spec) => (
-                                  <li key={spec} className="flex items-center gap-2.5 bg-white p-3 rounded-xl border border-[#7a7b8f]/20">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-[#3c4d70] flex-shrink-0"></span>
-                                    <span>{spec}</span>
-                                  </li>
-                                ))}
-                              </ul>
+                          <div className="mb-6">
+                            <div className="text-xs font-bold uppercase tracking-wider text-[#3c4d70] mb-3">
+                              Spesifikasi &amp; Keunggulan Akun
+                            </div>
+                            <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 text-xs sm:text-sm text-[#0b2b51]/90 font-medium">
+                              {specs.map((spec) => (
+                                <li key={spec} className="flex items-center gap-2.5 bg-white p-3 rounded-xl border border-[#7a7b8f]/20">
+                                  <span className="w-1.5 h-1.5 rounded-full bg-[#3c4d70] flex-shrink-0"></span>
+                                  <span>{spec}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
 
-                              {item.warranty && (
-                                <div className="mt-4 p-3.5 rounded-xl bg-white border border-[#c5a8a1]/60 text-xs text-[#0b2b51]/85 leading-relaxed flex items-start gap-2.5">
-                                  <span className="inline-block w-2 h-2 rounded-full bg-[#807073] mt-1 flex-shrink-0"></span>
-                                  <div>
-                                    <span className="font-semibold text-[#0b2b51]">Ketentuan Garansi: </span>
-                                    {item.warranty}
-                                  </div>
-                                </div>
-                              )}
+                          {item.warranty && (
+                            <div className="mb-6 p-4 rounded-xl bg-white border border-[#c5a8a1]/70 text-xs text-[#0b2b51]/85 leading-relaxed flex items-start gap-3">
+                              <span className="inline-block w-2 h-2 rounded-full bg-[#807073] mt-1 flex-shrink-0"></span>
+                              <div>
+                                <span className="font-bold text-[#0b2b51]">Ketentuan Garansi: </span>
+                                {item.warranty}
+                              </div>
+                            </div>
+                          )}
+
+                          <div className="pt-4 border-t border-[#7a7b8f]/15 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+                            <div className="flex items-center gap-2.5 text-xs text-[#7a7b8f]">
+                              <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                              <span>Garansi Resmi &amp; Penyerahan Cepat</span>
                             </div>
 
-                            <div className="flex flex-col justify-end">
+                            <div>
                               {isOut ? (
                                 <div
                                   role="status"
                                   aria-label={`${item.name} stok kosong`}
-                                  className="w-full text-center py-3.5 px-4 rounded-xl bg-[#f8fafc] text-[#7a7b8f]/60 border border-[#7a7b8f]/20 font-medium text-sm cursor-not-allowed select-none"
+                                  className="w-full sm:w-auto text-center py-3 px-6 rounded-xl bg-[#f8fafc] text-[#7a7b8f]/60 border border-[#7a7b8f]/20 font-medium text-sm cursor-not-allowed select-none"
                                 >
                                   Stok Sedang Kosong
                                 </div>
                               ) : (
-                                <a
-                                  href={waUrl}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="w-full inline-flex items-center justify-center gap-2 bg-[#0b2b51] hover:bg-[#3c4d70] text-white font-semibold text-sm px-6 py-3.5 rounded-xl shadow-[0_4px_16px_rgba(11,43,81,0.15)] transition-[background-color] duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3c4d70] focus-visible:ring-offset-2"
+                                <WhatsAppTrigger
+                                  message={`Halo, Saya mau membeli ${item.name}. Apakah stock tersedia?`}
+                                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#0b2b51] hover:bg-[#3c4d70] text-white font-semibold text-sm px-6 py-3 rounded-xl shadow-[0_4px_16px_rgba(11,43,81,0.15)] transition-[background-color] duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3c4d70] cursor-pointer"
                                 >
                                   <i className="fa-brands fa-whatsapp text-lg"></i>
                                   <span>Pesan Sekarang via WhatsApp</span>
-                                </a>
+                                </WhatsAppTrigger>
                               )}
                             </div>
                           </div>
@@ -282,15 +277,13 @@ export default function Home() {
             </p>
           </div>
 
-          <a
-            href="https://wa.me/6283144569056?text=Halo%20Admin%20keknyaJualan%2C%20saya%20ingin%20tanya-tanya%20seputar%20produk%20digital"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 justify-center bg-[#0b2b51] hover:bg-[#3c4d70] text-white font-semibold text-xs sm:text-sm px-7 py-3.5 rounded-xl transition-[background-color] duration-150 flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0b2b51] focus-visible:ring-offset-2"
+          <WhatsAppTrigger
+            message="Halo Admin keknyaJualan, saya ingin tanya-tanya seputar produk digital atau akun kustom"
+            className="inline-flex items-center gap-2 justify-center bg-[#0b2b51] hover:bg-[#3c4d70] text-white font-semibold text-xs sm:text-sm px-7 py-3.5 rounded-xl transition-[background-color] duration-150 flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0b2b51] focus-visible:ring-offset-2 cursor-pointer"
           >
             <i className="fa-brands fa-whatsapp text-lg"></i>
             <span>Konsultasi WhatsApp</span>
-          </a>
+          </WhatsAppTrigger>
         </section>
       </main>
 
@@ -299,18 +292,16 @@ export default function Home() {
           <div className="flex items-center gap-2">
             <span className="font-display text-base uppercase tracking-normal text-[#0b2b51]">keknyaJualan</span>
             <span>·</span>
-            <span>Katalog &amp; Stok Terverifikasi</span>
+            <span>Made by Myhli_</span>
           </div>
 
-          <a
-            href="https://wa.me/6283144569056"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 hover:text-[#0b2b51] transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3c4d70]"
+          <WhatsAppTrigger
+            message="Halo Admin keknyaJualan, saya ingin tanya-tanya seputar produk digital"
+            className="inline-flex items-center gap-1.5 hover:text-[#0b2b51] transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3c4d70] cursor-pointer"
           >
             <i className="fa-brands fa-whatsapp text-black text-base"></i>
-            <span>WhatsApp (+62 831-4456-9056)</span>
-          </a>
+            <span>WhatsApp (Ilham / Miftakh)</span>
+          </WhatsAppTrigger>
         </div>
       </footer>
     </div>
