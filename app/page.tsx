@@ -65,12 +65,23 @@ function getProductDetails(name: string) {
 
 export default function Home() {
   const stock = getStock();
+  const stockEntries = Object.entries(stock);
 
   return (
     <div className="min-h-screen bg-white text-[#132442] flex flex-col justify-between selection:bg-[#bc8909] selection:text-white">
+      <a
+        href="#catalog"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#1a3a63] focus:text-white focus:rounded-lg focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#bc8909]"
+      >
+        Lewati ke katalog produk
+      </a>
+
       <header className="w-full pt-6 sm:pt-8 pb-4">
         <div className="max-w-[1120px] mx-auto px-4 sm:px-6 flex items-center justify-between">
-          <a href="#catalog" className="inline-flex items-center gap-3.5 text-decoration-none group select-none">
+          <a
+            href="#catalog"
+            className="inline-flex items-center gap-3.5 text-decoration-none group select-none rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#bc8909] focus-visible:ring-offset-2"
+          >
             <div className="w-12 h-12 rounded-[14px] bg-white border border-[#1a3a63]/10 shadow-[0_2px_12px_rgba(19,36,66,0.06)] overflow-hidden flex items-center justify-center p-1 transition-transform duration-300 group-hover:scale-105 group-hover:-rotate-2">
               <Image
                 src="/avatar.png"
@@ -93,15 +104,15 @@ export default function Home() {
 
           <div className="flex items-center gap-2.5 sm:gap-3">
             <div className="hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#fafbfc] border border-[#637d92]/20 text-xs font-semibold text-[#1a3a63] shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-[#bc8909] animate-pulse"></span>
-              <span>LIVE WIB SYNC</span>
+              <span className="w-2 h-2 rounded-full bg-[#bc8909] animate-pulse motion-reduce:animate-none"></span>
+              <span>LIVE&nbsp;WIB&nbsp;SYNC</span>
             </div>
 
             <a
               href="https://wa.me/6283144569056"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center bg-[#1a3a63] hover:bg-[#132442] text-white rounded-full px-4 sm:px-5 py-2 sm:py-2.5 font-semibold text-xs sm:text-sm tracking-tight shadow-sm hover:shadow transition-all duration-200"
+              className="inline-flex items-center justify-center bg-[#1a3a63] hover:bg-[#132442] text-white rounded-full px-4 sm:px-5 py-2 sm:py-2.5 font-semibold text-xs sm:text-sm tracking-tight shadow-sm hover:shadow transition-[background-color,box-shadow] duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1a3a63] focus-visible:ring-offset-2"
             >
               <span>Chat Admin</span>
             </a>
@@ -112,13 +123,13 @@ export default function Home() {
       <main className="max-w-[1120px] w-full mx-auto px-4 sm:px-6 py-8 sm:py-14 flex-1 flex flex-col justify-start">
         <section className="mb-12 sm:mb-16">
           <div className="max-w-3xl">
-            <h1 className="text-4xl sm:text-6xl md:text-7xl font-light uppercase tracking-[-0.04em] leading-[0.94] text-[#132442] mb-4">
+            <h1 className="text-4xl sm:text-6xl md:text-7xl font-light uppercase tracking-[-0.04em] leading-[0.94] text-[#132442] mb-4 text-balance">
               <span>Hey we&apos;re keknya</span>
               <br />
               <span className="text-[#637d92]/60 font-light">let&apos;s get your</span>
             </h1>
 
-            <div className="text-2xl sm:text-4xl md:text-5xl font-medium tracking-tight text-[#bc8909] mb-6">
+            <div className="text-2xl sm:text-4xl md:text-5xl font-medium tracking-tight text-[#bc8909] mb-6 text-balance">
               verified subscriptions (•̀ᴗ•́)و ̑̑
             </div>
 
@@ -141,7 +152,7 @@ export default function Home() {
               <div className="text-[11px] font-bold text-[#bc8909] uppercase tracking-wider mb-1">
                 PENGIRIMAN INSTAN
               </div>
-              <div className="text-sm font-semibold text-[#132442]">Aktivasi 1–5 Menit</div>
+              <div className="text-sm font-semibold text-[#132442]">Aktivasi 1–5&nbsp;Menit</div>
               <div className="text-xs text-[#637d92] mt-1">Proses penyerahan akun dan instruksi aktivasi dikirim langsung via WhatsApp.</div>
             </div>
 
@@ -155,109 +166,120 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="catalog" className="mb-12">
+        <section id="catalog" className="mb-12 scroll-mt-12">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-6 pb-4 border-b border-[#637d92]/20 gap-2">
             <div>
               <div className="text-xs font-bold uppercase tracking-wider text-[#bc8909] mb-1">
                 LIVE INVENTORY
               </div>
-              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#132442]">
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#132442] text-balance">
                 Katalog Stok Terkini
               </h2>
             </div>
             <p className="text-xs sm:text-sm text-[#637d92] font-medium">
-              Pembaruan otomatis 07:00 WIB via MTProto
+              Pembaruan otomatis 07:00&nbsp;WIB via MTProto
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {Object.entries(stock).map(([item, status]) => {
-              const normalized = status.trim().toLowerCase();
-              const isOut =
-                normalized === "habis" ||
-                normalized === "kosong" ||
-                normalized === "0" ||
-                normalized === "out of stock";
+            {stockEntries.length === 0 ? (
+              <div className="col-span-full py-16 text-center bg-[#fafbfc] rounded-[24px] border border-[#637d92]/20">
+                <p className="text-base font-semibold text-[#132442]">Katalog sedang diperbarui</p>
+                <p className="text-xs text-[#637d92] mt-1">Silakan hubungi WhatsApp admin untuk informasi stok terkini.</p>
+              </div>
+            ) : (
+              stockEntries.map(([item, status]) => {
+                const normalized = status.trim().toLowerCase();
+                const isOut =
+                  normalized === "habis" ||
+                  normalized === "kosong" ||
+                  normalized === "0" ||
+                  normalized === "out of stock";
 
-              const details = getProductDetails(item);
-              const waUrl = getOrderUrl(item);
+                const details = getProductDetails(item);
+                const waUrl = getOrderUrl(item);
 
-              return (
-                <div
-                  key={item}
-                  className={`bg-white rounded-[24px] p-6 sm:p-7 border transition-all duration-300 flex flex-col justify-between relative overflow-hidden group ${
-                    isOut
-                      ? "border-[#637d92]/20 opacity-65"
-                      : "border-[#637d92]/25 shadow-[0_4px_20px_rgba(19,36,66,0.04)] hover:shadow-[0_12px_32px_-8px_rgba(19,36,66,0.1),0_0_24px_-4px_rgba(188,137,9,0.18)] hover:border-[#bc8909]/60 hover:-translate-y-1"
-                  }`}
-                >
-                  <div>
-                    <div className="flex items-center justify-between gap-2 mb-4">
-                      <span className="text-[11px] font-bold text-[#bc8909] uppercase tracking-wider">
-                        {details.code}
-                      </span>
+                return (
+                  <div
+                    key={item}
+                    className={`bg-white rounded-[24px] p-6 sm:p-7 border transition-[transform,box-shadow,border-color] duration-300 flex flex-col justify-between relative overflow-hidden group ${
+                      isOut
+                        ? "border-[#637d92]/20 opacity-65"
+                        : "border-[#637d92]/25 shadow-[0_4px_20px_rgba(19,36,66,0.04)] hover:shadow-[0_12px_32px_-8px_rgba(19,36,66,0.1),0_0_24px_-4px_rgba(188,137,9,0.18)] hover:border-[#bc8909]/60 hover:-translate-y-1"
+                    }`}
+                  >
+                    <div>
+                      <div className="flex items-center justify-between gap-2 mb-4">
+                        <span className="text-[11px] font-bold text-[#bc8909] uppercase tracking-wider">
+                          {details.code}
+                        </span>
 
+                        {isOut ? (
+                          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#f1f5f9] text-[#637d92] border border-[#637d92]/20 text-xs font-semibold">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#637d92]"></span>
+                            HABIS
+                          </span>
+                        ) : (
+                          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#1a3a63] text-white text-xs font-semibold shadow-sm tabular-nums">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#bc8909]"></span>
+                            {status.toLowerCase() === "ready" ? "READY" : `${status}\u00A0UNIT`}
+                          </span>
+                        )}
+                      </div>
+
+                      <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-[#132442] mb-2 leading-snug text-balance">
+                        {item}
+                      </h3>
+
+                      <p className="text-xs sm:text-sm text-[#637d92] leading-relaxed mb-6">
+                        {details.desc}
+                      </p>
+
+                      <div className="space-y-2 mb-8">
+                        {details.specs.map((spec) => (
+                          <div key={spec} className="flex items-center gap-2 text-xs text-[#132442]/85 font-medium">
+                            <svg aria-hidden="true" className="w-3.5 h-3.5 text-[#bc8909] flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M12 2C12 7.523 7.523 12 2 12C7.523 12 12 16.477 12 22C12 16.477 16.477 12 22 12C16.477 12 12 7.523 12 2Z" />
+                            </svg>
+                            <span>{spec}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="pt-4 border-t border-[#637d92]/20">
                       {isOut ? (
-                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#f1f5f9] text-[#637d92] border border-[#637d92]/20 text-xs font-semibold">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#637d92]"></span>
-                          HABIS
-                        </span>
+                        <div
+                          role="status"
+                          aria-label={`${item} stok kosong`}
+                          className="w-full text-center py-3.5 px-4 rounded-full bg-[#f8fafc] text-[#637d92]/50 border border-[#637d92]/20 font-semibold text-sm cursor-not-allowed select-none"
+                        >
+                          Stok Kosong
+                        </div>
                       ) : (
-                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#1a3a63] text-white text-xs font-semibold shadow-sm">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#bc8909]"></span>
-                          {status.toLowerCase() === "ready" ? "READY" : `${status} UNIT`}
-                        </span>
+                        <a
+                          href={waUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-full inline-flex items-center justify-center gap-2 bg-[#bc8909] hover:bg-[#a57706] text-white font-semibold text-sm px-6 py-3.5 rounded-full shadow-[0_6px_18px_-4px_rgba(188,137,9,0.4)] hover:shadow-[0_10px_24px_-4px_rgba(188,137,9,0.5)] hover:-translate-y-0.5 active:translate-y-0 transition-[transform,box-shadow,background-color] duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#bc8909] focus-visible:ring-offset-2"
+                        >
+                          <span>Beli via WhatsApp</span>
+                          <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                          </svg>
+                        </a>
                       )}
                     </div>
-
-                    <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-[#132442] mb-2 leading-snug">
-                      {item}
-                    </h3>
-
-                    <p className="text-xs sm:text-sm text-[#637d92] leading-relaxed mb-6">
-                      {details.desc}
-                    </p>
-
-                    <div className="space-y-2 mb-8">
-                      {details.specs.map((spec) => (
-                        <div key={spec} className="flex items-center gap-2 text-xs text-[#132442]/85 font-medium">
-                          <svg className="w-3.5 h-3.5 text-[#bc8909] flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2C12 7.523 7.523 12 2 12C7.523 12 12 16.477 12 22C12 16.477 16.477 12 22 12C16.477 12 12 7.523 12 2Z" />
-                          </svg>
-                          <span>{spec}</span>
-                        </div>
-                      ))}
-                    </div>
                   </div>
-
-                  <div className="pt-4 border-t border-[#637d92]/20">
-                    {isOut ? (
-                      <div className="w-full text-center py-3.5 px-4 rounded-full bg-[#f8fafc] text-[#637d92]/50 border border-[#637d92]/20 font-semibold text-sm cursor-not-allowed select-none">
-                        Stok Kosong
-                      </div>
-                    ) : (
-                      <a
-                        href={waUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-full inline-flex items-center justify-center gap-2 bg-[#bc8909] hover:bg-[#a57706] text-white font-semibold text-sm px-6 py-3.5 rounded-full shadow-[0_6px_18px_-4px_rgba(188,137,9,0.4)] hover:shadow-[0_10px_24px_-4px_rgba(188,137,9,0.5)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
-                      >
-                        <span>Beli via WhatsApp</span>
-                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                        </svg>
-                      </a>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
+                );
+              })
+            )}
           </div>
         </section>
 
         <section className="bg-[#fafbfc] rounded-[24px] p-6 sm:p-10 border border-[#637d92]/25 shadow-[0_4px_20px_rgba(19,36,66,0.03)] flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="max-w-xl text-center sm:text-left">
-            <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-[#132442] mb-2">
+            <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-[#132442] mb-2 text-balance">
               Butuh Langganan Lain atau Pembelian Tim?
             </h3>
             <p className="text-xs sm:text-sm text-[#637d92] leading-relaxed font-normal">
@@ -269,7 +291,7 @@ export default function Home() {
             href="https://wa.me/6283144569056?text=Halo%20Admin%20keknyaJualan%2C%20saya%20ingin%20tanya-tanya%20seputar%20produk%20digital"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center bg-[#1a3a63] hover:bg-[#132442] text-white font-semibold text-sm px-7 py-4 rounded-full shadow-[0_4px_16px_rgba(19,36,66,0.15)] hover:-translate-y-0.5 transition-all duration-200 flex-shrink-0"
+            className="inline-flex items-center justify-center bg-[#1a3a63] hover:bg-[#132442] text-white font-semibold text-sm px-7 py-4 rounded-full shadow-[0_4px_16px_rgba(19,36,66,0.15)] hover:-translate-y-0.5 transition-[transform,background-color,box-shadow] duration-200 flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1a3a63] focus-visible:ring-offset-2"
           >
             <span>Konsultasi WhatsApp</span>
           </a>
@@ -285,11 +307,16 @@ export default function Home() {
           </div>
 
           <div className="flex items-center gap-4">
-            <a href="https://wa.me/6283144569056" target="_blank" rel="noopener noreferrer" className="hover:text-[#bc8909] transition-colors">
+            <a
+              href="https://wa.me/6283144569056"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#bc8909] transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#bc8909]"
+            >
               WhatsApp (+62 831-4456-9056)
             </a>
             <span>•</span>
-            <span>Auto Sync 07:00 WIB</span>
+            <span>Auto Sync 07:00&nbsp;WIB</span>
           </div>
         </div>
       </footer>
