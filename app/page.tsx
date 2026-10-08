@@ -2,6 +2,14 @@ import fs from "fs";
 import path from "path";
 import Image from "next/image";
 
+type ProductInput = {
+  name: string;
+  category?: string;
+  desc?: string;
+  specs?: string[];
+  status?: string;
+};
+
 type StockData = Record<string, string>;
 
 function getStock(): StockData {
@@ -16,11 +24,7 @@ function getStock(): StockData {
   try {
     return JSON.parse(fs.readFileSync(filePath, "utf-8"));
   } catch {
-    return {
-      "Google AI PRO 18 Bulan": "12",
-      "Gemini Advanced": "Ready",
-      "Canva Pro": "Habis",
-    };
+    return {};
   }
 }
 
@@ -29,63 +33,105 @@ function getOrderUrl(item: string): string {
   return `https://wa.me/6283144569056?text=${encodeURIComponent(message)}`;
 }
 
-function getProductDetails(name: string) {
-  const lower = name.toLowerCase();
-  if (lower.includes("google") || lower.includes("ai pro")) {
-    return {
-      code: "01",
-      category: "Google One AI Pro",
-      desc: "Langganan personal resmi berdurasi 18 bulan penuh dengan kapasitas 2TB Google One Cloud dan akses model Gemini Ultra.",
-      specs: [
-        "Akses Gemini 1.5 Pro dan Ultra",
-        "Kapasitas 2TB Google One Storage",
-        "Garansi akun penuh 18 bulan",
-        "Akun privat personal",
-      ],
-    };
+function getProducts() {
+  const productsPath = path.join(process.cwd(), "products.json");
+  const liveStock = getStock();
+
+  let baseProducts: ProductInput[] = [];
+
+  if (fs.existsSync(productsPath)) {
+    try {
+      baseProducts = JSON.parse(fs.readFileSync(productsPath, "utf-8"));
+    } catch {
+      baseProducts = [];
+    }
   }
-  if (lower.includes("gemini")) {
-    return {
-      code: "02",
-      category: "Gemini Workspace",
-      desc: "Akses komputasi penalaran model tingkat lanjut untuk pemrograman, sintesis dokumen panjang, dan integrasi Google Workspace.",
-      specs: [
-        "Fitur penalaran tingkat lanjut",
-        "Konteks dokumen panjang",
-        "Cloud storage 2TB",
-        "Prioritas server berkecepatan tinggi",
-      ],
-    };
+
+  if (!baseProducts.length) {
+    baseProducts = [
+      {
+        name: "Google AI PRO 18 Bulan",
+        category: "Google One AI Pro",
+        desc: "Langganan personal resmi berdurasi 18 bulan penuh dengan kapasitas 2TB Google One Cloud dan akses model Gemini Ultra.",
+        specs: [
+          "Akses Gemini 1.5 Pro dan Ultra",
+          "Kapasitas 2TB Google One Storage",
+          "Garansi akun penuh 18 bulan",
+          "Akun privat personal",
+        ],
+      },
+      {
+        name: "Gemini Advanced",
+        category: "Gemini Workspace",
+        desc: "Akses komputasi penalaran model tingkat lanjut untuk pemrograman, sintesis dokumen panjang, dan integrasi Google Workspace.",
+        specs: [
+          "Fitur penalaran tingkat lanjut",
+          "Konteks dokumen panjang",
+          "Cloud storage 2TB",
+          "Prioritas server berkecepatan tinggi",
+        ],
+      },
+      {
+        name: "Canva Pro",
+        category: "Canva Design Suite",
+        desc: "Paket lengkap kreator konten dengan akses ke 100M+ aset visual, background remover instan, dan rangkaian Magic Studio.",
+        specs: [
+          "100M+ foto dan elemen grafis premium",
+          "Penghapus latar belakang otomatis",
+          "Alat kreasi Magic Studio",
+          "Ekspor desain resolusi tinggi",
+        ],
+      },
+    ];
   }
-  if (lower.includes("canva")) {
-    return {
-      code: "03",
-      category: "Canva Design Suite",
-      desc: "Paket lengkap kreator konten dengan akses ke 100M+ aset visual, background remover instan, dan rangkaian Magic Studio.",
-      specs: [
-        "100M+ foto dan elemen grafis premium",
-        "Penghapus latar belakang otomatis",
-        "Alat kreasi Magic Studio",
-        "Ekspor desain resolusi tinggi",
-      ],
-    };
-  }
-  return {
-    code: "04",
-    category: "Lisensi Digital",
-    desc: "Lisensi aplikasi produktivitas dan AI resmi dengan aktivasi langsung via WhatsApp admin keknyaJualan.",
-    specs: [
-      "Aktivasi 1–5 Menit",
-      "Akun terverifikasi",
-      "Garansi seller penuh",
-      "Bantuan teknis langsung",
-    ],
-  };
+
+  const productMap = new Map<string, ProductInput>();
+  baseProducts.forEach((p) => {
+    productMap.set(p.name.toLowerCase().trim(), p);
+  });
+
+  const merged: (ProductInput & { code: string; status: string })[] = [];
+  let index = 1;
+
+  baseProducts.forEach((prod) => {
+    const matchedStock =
+      liveStock[prod.name] ||
+      Object.entries(liveStock).find(
+        ([k]) => k.toLowerCase().trim() === prod.name.toLowerCase().trim()
+      )?.[1];
+    const status = matchedStock || prod.status || "Ready";
+    const code = String(index++).padStart(2, "0");
+    merged.push({
+      ...prod,
+      code,
+      status,
+    });
+  });
+
+  Object.entries(liveStock).forEach(([itemName, statusVal]) => {
+    if (!productMap.has(itemName.toLowerCase().trim())) {
+      const code = String(index++).padStart(2, "0");
+      merged.push({
+        name: itemName,
+        category: "Langganan Digital",
+        desc: `Lisensi dan aktivasi resmi untuk ${itemName} dengan penyerahan langsung via WhatsApp.`,
+        specs: [
+          "Aktivasi 1–5 Menit",
+          "Akun Terverifikasi",
+          "Garansi Penuh",
+          "Bantuan Teknis",
+        ],
+        code,
+        status: statusVal,
+      });
+    }
+  });
+
+  return merged;
 }
 
 export default function Home() {
-  const stock = getStock();
-  const stockEntries = Object.entries(stock);
+  const products = getProducts();
 
   return (
     <div className="min-h-screen bg-white text-[#0b2b51] flex flex-col justify-between selection:bg-[#c5a8a1] selection:text-[#0b2b51]">
@@ -163,29 +209,33 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col gap-5">
-            {stockEntries.length === 0 ? (
+            {products.length === 0 ? (
               <div className="py-16 text-center bg-[#fafbfc] rounded-2xl border border-[#7a7b8f]/20">
                 <p className="text-base font-semibold text-[#0b2b51]">Katalog sedang diperbarui</p>
                 <p className="text-xs text-[#7a7b8f] mt-1">Silakan hubungi WhatsApp admin untuk informasi stok terkini.</p>
               </div>
             ) : (
-              stockEntries.map(([item, status]) => {
-                const normalized = status.trim().toLowerCase();
+              products.map((item) => {
+                const normalized = (item.status || "").trim().toLowerCase();
                 const isOut =
                   normalized === "habis" ||
                   normalized === "kosong" ||
                   normalized === "0" ||
                   normalized === "out of stock";
 
-                const details = getProductDetails(item);
-                const waUrl = getOrderUrl(item);
+                const waUrl = getOrderUrl(item.name);
+                const specs = item.specs || [
+                  "Aktivasi 1–5 Menit",
+                  "Akun Terverifikasi",
+                  "Garansi Penuh",
+                ];
 
                 return (
                   <div
-                    key={item}
+                    key={item.name}
                     tabIndex={0}
                     role="region"
-                    aria-label={`Detail produk ${item}`}
+                    aria-label={`Detail produk ${item.name}`}
                     className={`group bg-white rounded-2xl border transition-[border-color,box-shadow] duration-300 overflow-hidden outline-none ${
                       isOut
                         ? "border-[#7a7b8f]/20 opacity-75"
@@ -195,15 +245,15 @@ export default function Home() {
                     <div className="p-6 sm:p-8 cursor-pointer select-none flex flex-col md:flex-row md:items-center justify-between gap-4">
                       <div className="flex items-start md:items-baseline gap-4 sm:gap-6 flex-1 min-w-0">
                         <span className="font-display text-2xl sm:text-3xl text-[#7a7b8f]/60 tracking-normal flex-shrink-0 group-hover:text-[#3c4d70] group-focus-within:text-[#3c4d70] transition-colors">
-                          {details.code}
+                          {item.code}
                         </span>
 
                         <div className="flex-1 min-w-0">
                           <div className="text-[11px] font-bold text-[#7a7b8f] uppercase tracking-wider mb-1">
-                            {details.category}
+                            {item.category || "Langganan"}
                           </div>
                           <h2 className="font-display text-2xl sm:text-4xl md:text-5xl uppercase tracking-normal text-[#0b2b51] leading-tight group-hover:text-[#3c4d70] group-focus-within:text-[#3c4d70] transition-colors break-words">
-                            {item}
+                            {item.name}
                           </h2>
                         </div>
                       </div>
@@ -215,7 +265,7 @@ export default function Home() {
                           </span>
                         ) : (
                           <span className="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[#0b2b51] text-white tabular-nums shadow-sm">
-                            {status.toLowerCase() === "ready" ? "Ready" : `Sisa ${status}\u00A0Unit`}
+                            {item.status.toLowerCase() === "ready" ? "Ready" : `Sisa ${item.status}\u00A0Unit`}
                           </span>
                         )}
 
@@ -236,14 +286,14 @@ export default function Home() {
                                 Deskripsi Layanan
                               </div>
                               <p className="text-sm sm:text-base text-[#0b2b51]/85 leading-relaxed mb-6 font-normal">
-                                {details.desc}
+                                {item.desc || `Paket langganan resmi ${item.name} dengan aktivasi instan.`}
                               </p>
 
                               <div className="text-xs font-bold uppercase tracking-wider text-[#3c4d70] mb-3">
                                 Spesifikasi &amp; Keunggulan Akun
                               </div>
                               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs sm:text-sm text-[#0b2b51]/90 font-medium">
-                                {details.specs.map((spec) => (
+                                {specs.map((spec) => (
                                   <li key={spec} className="flex items-center gap-2.5 bg-white p-3 rounded-xl border border-[#7a7b8f]/20">
                                     <span className="w-1.5 h-1.5 rounded-full bg-[#3c4d70] flex-shrink-0"></span>
                                     <span>{spec}</span>
@@ -269,7 +319,7 @@ export default function Home() {
                                 {isOut ? (
                                   <div
                                     role="status"
-                                    aria-label={`${item} stok kosong`}
+                                    aria-label={`${item.name} stok kosong`}
                                     className="w-full text-center py-3.5 px-4 rounded-xl bg-[#f8fafc] text-[#7a7b8f]/60 border border-[#7a7b8f]/20 font-medium text-sm cursor-not-allowed select-none"
                                   >
                                     Stok Sedang Kosong

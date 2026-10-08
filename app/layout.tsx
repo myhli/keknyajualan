@@ -17,8 +17,8 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "keknyaJualan: Katalog Stok Akun & Langganan Digital",
-  description: "Katalog stok akun dan langganan digital resmi dengan pemesanan langsung via WhatsApp.",
+  title: "keknyaJualan",
+  description: "Jual akun / Subscription / Family Subscription.",
   icons: {
     icon: [
       { url: "/icon.png" },
