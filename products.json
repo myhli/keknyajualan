@@ -2,34 +2,16 @@
   {
     "name": "Google AI PRO 18 Bulan",
     "category": "Google One AI Pro",
-    "desc": "Langganan personal resmi berdurasi 18 bulan penuh dengan kapasitas 2TB Google One Cloud dan akses model Gemini Ultra.",
+    "desc": "Langganan Google AI Pro 18 Bulan menggunakan akun pribadi (bukan sharing) dengan penyimpanan Cloud hingga 5 TB, privasi aman, dan garansi 24 jam sejak pembelian.",
     "specs": [
-      "Akses Gemini 1.5 Pro dan Ultra",
-      "Kapasitas 2TB Google One Storage",
-      "Garansi akun penuh 18 bulan",
-      "Akun privat personal"
-    ]
-  },
-  {
-    "name": "Gemini Advanced",
-    "category": "Gemini Workspace",
-    "desc": "Akses komputasi penalaran model tingkat lanjut untuk pemrograman, sintesis dokumen panjang, dan integrasi Google Workspace.",
-    "specs": [
-      "Fitur penalaran tingkat lanjut",
-      "Konteks dokumen panjang",
-      "Cloud storage 2TB",
-      "Prioritas server berkecepatan tinggi"
-    ]
-  },
-  {
-    "name": "Canva Pro",
-    "category": "Canva Design Suite",
-    "desc": "Paket lengkap kreator konten dengan akses ke 100M+ aset visual, background remover instan, dan rangkaian Magic Studio.",
-    "specs": [
-      "100M+ foto dan elemen grafis premium",
-      "Penghapus latar belakang otomatis",
-      "Alat kreasi Magic Studio",
-      "Ekspor desain resolusi tinggi"
-    ]
-  }
+      "Penyimpanan Cloud hingga 5 TB",
+      "Privasi terjamin aman (Akun pribadi, bukan sharing)",
+      "Dapat mengundang 5 anggota keluarga",
+      "Limit user AI Gemini 4x lebih banyak",
+      "Akses Video AI (Veo, Whisk & Nano Banana, Gemini Omni)",
+      "Integrasi Aplikasi Google lain",
+      "Garansi 24 Jam sejak produk dibeli"
+    ],
+    "warranty": "Garansi berlaku 24 Jam sejak produk dibeli. Setelah masa garansi habis, permohonan garansi, penggantian, atau kendala yang dilaporkan di luar periode tersebut tidak dapat kami proses."
+    }
 ]

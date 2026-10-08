@@ -8,6 +8,7 @@ type ProductInput = {
   desc?: string;
   specs?: string[];
   status?: string;
+  warranty?: string;
 };
 
 type StockData = Record<string, string>;
@@ -230,6 +231,16 @@ export default function Home() {
                                   </li>
                                 ))}
                               </ul>
+
+                              {item.warranty && (
+                                <div className="mt-4 p-3.5 rounded-xl bg-white border border-[#c5a8a1]/60 text-xs text-[#0b2b51]/85 leading-relaxed flex items-start gap-2.5">
+                                  <span className="inline-block w-2 h-2 rounded-full bg-[#807073] mt-1 flex-shrink-0"></span>
+                                  <div>
+                                    <span className="font-semibold text-[#0b2b51]">Ketentuan Garansi: </span>
+                                    {item.warranty}
+                                  </div>
+                                </div>
+                              )}
                             </div>
 
                             <div className="bg-white p-6 rounded-2xl border border-[#7a7b8f]/20 flex flex-col justify-between gap-6 shadow-sm">
