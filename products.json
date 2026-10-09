@@ -2,7 +2,7 @@
   {
     "name": "Google AI PRO 18 Bulan",
     "category": "Google One AI Pro",
-    "desc": "Langganan Google AI Pro 18 Bulan menggunakan akun pribadi (bukan sharing) dengan penyimpanan Cloud hingga 5 TB, privasi aman, dan garansi resmi 24 jam sejak pembelian.",
+    "desc": "Langganan Google AI Pro 18 Bulan pakai akun pribadi (bukan sharing).",
     "specs": [
       "Penyimpanan Cloud hingga 5 TB",
       "Privasi terjamin aman (Akun pribadi, bukan sharing)",
@@ -12,6 +12,115 @@
       "Integrasi Aplikasi Google lain",
       "Garansi 24 Jam sejak produk dibeli"
     ],
-    "warranty": "Garansi berlaku 24 Jam sejak produk dibeli. Setelah masa garansi habis, permohonan garansi, penggantian, atau kendala yang dilaporkan di luar periode tersebut tidak dapat kami proses."
+    "warranty": "Garansi berlaku 24 Jam sejak produk dibeli."
+  },
+  {
+    "name": "YouTube Premium 1 Bulan Family Plan",
+    "category": "YouTube Premium",
+    "desc": "Langganan YouTube Premium 1 Bulan via Family Plan ke email pribadi.",
+    "specs": [
+      "Bebas iklan di semua video & YouTube Music",
+      "Putar di latar belakang (Background Play & PiP)",
+      "Download video offline kualitas Full HD",
+      "Menggunakan akun Google pribadi (bukan akun sharing)",
+      "Riwayat tontonan, rekomendasi, dan playlist tetap utuh"
+    ],
+    "warranty": "Garansi berlaku 30 hari sejak tautan undangan diterima. Penggantian tautan baru diproses jika status premium terlepas sebelum durasi habis."
+  },
+  {
+    "name": "Spotify Premium 1 Bulan",
+    "category": "Spotify Premium",
+    "desc": "Aktivasi Spotify Premium 1 Bulan via Family Invite ke akun Spotify pribadi.",
+    "specs": [
+      "Bebas iklan audio dan visual saat mendengarkan musik",
+      "Download lagu sepuasnya untuk didengarkan offline",
+      "Kualitas streaming audio tertinggi (Very High 320 kbps)",
+      "Akun Spotify pribadi (playlist, lagu favorit, dan follower tetap aman)",
+      "Bebas shuffle dan unlimited skip lagu"   
+    ],
+    "warranty": "Garansi berlaku 15 hari sejak pembelian. Penggantian grup family diberikan jika status premium hilang sebelum masa aktif berakhir."
+  },
+  {
+    "name": "Canva Pro Team 1 tahun",
+    "category": "Canva Pro",
+    "desc": "Upgrade akun Canva pribadi ke Canva Pro 1 tahun via undangan tim.",
+    "specs": [
+      "Akses penuh 100+ juta foto, video, audio, font, dan elemen premium",
+      "Fitur AI Magic Studio lengkap (Magic Expand, Magic Edit, Magic Grab)",
+      "Hapus background gambar & video dalam satu klik",
+      "Resize desain instan ke berbagai ukuran tanpa batas",
+      "Desain tersimpan di profil tim privat akun Anda"
+    ],
+    "warranty": "Garansi berlaku 30 hari. Jika tim mengalami demote atau reset lisensi, pembeli langsung dikirimkan tautan tim pengganti."
+  },
+  {
+    "name": "CapCut Pro 1 Bulan Private",
+    "category": "CapCut Pro",
+    "desc": "Akun Capcut Pro untuk 1 user.",
+    "specs": [
+      "Ekspor video resolusi tinggi hingga 4K 60fps tanpa watermark",
+      "Akses seluruh transisi, efek, suara, dan template Pro",
+      "Fitur AI: Auto Captions, Smart Cutout, Voice Enhancer, Video Upscaler",
+      "Bisa digunakan di Android, iOS, maupun PC / Desktop (1 User)",
+      "Kapasitas penyimpanan CapCut Cloud hingga 100 GB",
+      "Garansi akun selama 15 hari"
+    ],
+    "warranty": "Garansi berlaku 15 hari untuk penggunaan 1 User. Pelanggaran batas login lebih dari 1 User secara bersamaan menghanguskan garansi."
+  },
+  {
+    "name": "Alight Motion Pro 1 Tahun",
+    "category": "Alight Motion Pro",
+    "desc": "Akses Alight Motion Pro 1 Tahun untuk animasi motion graphics, visual effects, dan preset kustom tanpa watermark via akun siap pakai.",
+    "specs": [
+      "Ekspor video tanpa watermark dan mendukung import/export XML & Preset",
+      "Multi-layer grafik, video, dan audio tanpa batas layer",
+      "Akses seluruh pustaka efek visual dan kurva animasi pro",
+      "Mendukung ekspor resolusi Full HD hingga 4K",
+      "Login praktis via akun Google siap pakai yang disediakan",
+      "Garansi akses selama durasi langganan"
+    ],
+    "warranty": "Garansi berlaku selama durasi pembelian. Penggantian akun atau bantuan login diberikan jika terjadi kendala akses login awal."
+  },
+  {
+    "name": "Windows 10/11 Pro OEM Key",
+    "category": "Windows Activation",
+    "desc": "Kunci lisensi 25-digit original untuk aktivasi Windows 10 Pro atau Windows 11 Pro secara permanen, online, dan legal di 1 PC/Laptop.",
+    "specs": [
+      "Lisensi resmi 25 digit original Microsoft",
+      "Aktivasi online 1 kali permanen (Lifetime) untuk 1 PC / Motherboard",
+      "Bebas watermark Activate Windows dan buka seluruh fitur kustomisasi",
+      "Mendukung sistem 32-bit dan 64-bit serta update resmi Windows Update",
+      "Bisa untuk instalasi baru (Fresh Install) maupun upgrade dari Windows Home",
+      "Garansi aktivasi online 100% sukses"
+    ],
+    "warranty": "Garansi aktivasi berlaku 7 hari sejak pembelian. Jika key invalid atau gagal aktivasi secara online, diganti key baru dengan menyertakan bukti screenshot kode error."
+  },
+  {
+    "name": "Microsoft Office 365 Pro 1 Tahun",
+    "category": "Microsoft Office",
+    "desc": "Akun Microsoft 365 Pro resmi siap pakai dengan aplikasi Office terlengkap (Word, Excel, PowerPoint) untuk 5 perangkat dan penyimpanan cloud OneDrive 1 TB.",
+    "specs": [
+      "Aplikasi Office desktop & mobile: Word, Excel, PowerPoint, Outlook, OneNote",
+      "Bisa diinstal dan aktif hingga 5 perangkat bersamaan (PC, Mac, Tablet, Smartphone)",
+      "Penyimpanan Cloud OneDrive pribadi berkapasitas 1 TB",
+      "Dukungan pembaruan fitur keamanan dan aplikasi resmi dari Microsoft",
+      "Akun siap pakai (Email:Password) dengan izin ganti kata sandi pribadi",
+      "Garansi lisensi penuh selama 1 tahun"
+    ],
+    "warranty": "Garansi berlaku 1 tahun sejak akun diserahkan. Jika akun terkendala lisensi sebelum masa aktif selesai, diganti akun baru."
+  },
+  {
+    "name": "Apple Music 1 Bulan",
+    "category": "Apple Music",
+    "desc": "Langganan Apple Music 1 Bulan via link undangan Apple ID Family Sharing resmi dengan kualitas Lossless Audio dan Dolby Atmos.",
+    "specs": [
+      "Katalog 100+ juta lagu bebas iklan secara streaming dan download offline",
+      "Kualitas audio lossless hingga 24-bit/192 kHz Hi-Res Lossless",
+      "Fitur Audio Spasial dengan Dolby Atmos untuk suara surround 3D",
+      "Menggunakan Apple ID pribadi Anda tanpa mencampur data perangkat lain",
+      "Kompatibel di iOS, Android, macOS, Windows, dan browser web",
+      "Garansi 30 hari penuh"
+    ],
+    "warranty": "Garansi berlaku 30 hari sejak bergabung ke Family. Pengiriman tautan undangan baru diberikan jika terputus sebelum masa aktif berakhir."
   }
 ]

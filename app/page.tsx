@@ -8,27 +8,11 @@ type ProductInput = {
   category?: string;
   desc?: string;
   specs?: string[];
-  status?: string;
   warranty?: string;
 };
 
-type StockData = Record<string, string>;
-
-function getStock(): StockData {
-  const filePath = path.join(process.cwd(), "stock.json");
-  if (!fs.existsSync(filePath)) {
-    return {};
-  }
-  try {
-    return JSON.parse(fs.readFileSync(filePath, "utf-8"));
-  } catch {
-    return {};
-  }
-}
-
 function getProducts() {
   const productsPath = path.join(process.cwd(), "products.json");
-  const liveStock = getStock();
 
   let baseProducts: ProductInput[] = [];
 
@@ -41,17 +25,10 @@ function getProducts() {
   }
 
   return baseProducts.map((prod, idx) => {
-    const matchedStock =
-      liveStock[prod.name] ||
-      Object.entries(liveStock).find(
-        ([k]) => k.toLowerCase().trim() === prod.name.toLowerCase().trim()
-      )?.[1];
-    const status = matchedStock || prod.status || "Ready";
     const code = String(idx + 1).padStart(2, "0");
     return {
       ...prod,
       code,
-      status,
     };
   });
 }
@@ -123,7 +100,7 @@ export default function Home() {
         <section id="catalog" className="mb-14 scroll-mt-20">
           <div className="text-center mb-8 pb-4 border-b border-[#7a7b8f]/20">
             <h1 className="font-display text-2xl sm:text-4xl uppercase tracking-normal text-[#0b2b51] text-balance">
-              Daftar Produk &amp; Stok
+              Daftar Produk
             </h1>
             <p className="text-xs text-[#7a7b8f] mt-1">
               Arahkan kursor atau sentuh produk untuk melihat rincian paket dan pemesanan WhatsApp
@@ -134,17 +111,10 @@ export default function Home() {
             {products.length === 0 ? (
               <div className="py-16 text-center bg-[#fafbfc] rounded-2xl border border-[#7a7b8f]/20">
                 <p className="text-base font-semibold text-[#0b2b51]">Katalog sedang diperbarui</p>
-                <p className="text-xs text-[#7a7b8f] mt-1">Silakan hubungi WhatsApp admin untuk informasi stok terkini.</p>
+                <p className="text-xs text-[#7a7b8f] mt-1">Silakan hubungi WhatsApp admin untuk informasi pemesanan.</p>
               </div>
             ) : (
               products.map((item) => {
-                const normalized = (item.status || "").trim().toLowerCase();
-                const isOut =
-                  normalized === "habis" ||
-                  normalized === "kosong" ||
-                  normalized === "0" ||
-                  normalized === "out of stock";
-
                 const specs = item.specs || [
                   "Aktivasi 1–5 Menit",
                   "Akun Terverifikasi",
@@ -157,14 +127,10 @@ export default function Home() {
                     tabIndex={0}
                     role="region"
                     aria-label={`Detail produk ${item.name}`}
-                    className={`group bg-white rounded-2xl border transition-[border-color,box-shadow] duration-300 overflow-hidden outline-none ${
-                      isOut
-                        ? "border-[#7a7b8f]/20 opacity-75"
-                        : "border-[#7a7b8f]/30 hover:border-[#0b2b51] focus-within:border-[#0b2b51] hover:shadow-[0_12px_36px_rgba(11,43,81,0.08)] focus-within:shadow-[0_12px_36px_rgba(11,43,81,0.08)]"
-                    }`}
+                    className="group bg-white rounded-2xl border border-[#7a7b8f]/30 hover:border-[#0b2b51] focus-within:border-[#0b2b51] hover:shadow-[0_12px_36px_rgba(11,43,81,0.08)] focus-within:shadow-[0_12px_36px_rgba(11,43,81,0.08)] transition-[border-color,box-shadow] duration-300 overflow-hidden outline-none"
                   >
-                    <div className="p-6 sm:p-8 cursor-pointer select-none flex flex-col md:flex-row md:items-center justify-between gap-4">
-                      <div className="flex items-start md:items-baseline gap-4 sm:gap-6 flex-1 min-w-0">
+                    <div className="p-6 sm:p-8 cursor-pointer select-none flex flex-row items-center justify-between gap-4">
+                      <div className="flex items-center gap-4 sm:gap-6 flex-1 min-w-0">
                         <span className="font-display text-2xl sm:text-3xl text-[#7a7b8f]/60 tracking-normal flex-shrink-0 group-hover:text-[#3c4d70] group-focus-within:text-[#3c4d70] transition-colors">
                           {item.code}
                         </span>
@@ -176,17 +142,7 @@ export default function Home() {
                         </div>
                       </div>
 
-                      <div className="flex items-center justify-between md:justify-end gap-3.5 sm:gap-4 flex-shrink-0 pt-2 md:pt-0 border-t md:border-t-0 border-[#7a7b8f]/10">
-                        {isOut ? (
-                          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-[#f1f5f9] text-[#7a7b8f] border border-[#7a7b8f]/20">
-                            Stok Habis
-                          </span>
-                        ) : (
-                          <span className="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[#0b2b51] text-white tabular-nums shadow-sm">
-                            {item.status.toLowerCase() === "ready" ? "Ready" : `Sisa ${item.status}\u00A0Unit`}
-                          </span>
-                        )}
-
+                      <div className="flex items-center justify-end flex-shrink-0">
                         <span className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-[#7a7b8f]/30 flex items-center justify-center text-[#0b2b51] group-hover:rotate-45 group-focus-within:rotate-45 group-hover:bg-[#0b2b51] group-focus-within:bg-[#0b2b51] group-hover:text-white group-focus-within:text-white group-hover:border-[#0b2b51] group-focus-within:border-[#0b2b51] transition-[transform,background-color,color,border-color] duration-300 flex-shrink-0">
                           <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
@@ -231,31 +187,14 @@ export default function Home() {
                             </div>
                           )}
 
-                          <div className="pt-4 border-t border-[#7a7b8f]/15 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
-                            <div className="flex items-center gap-2.5 text-xs text-[#7a7b8f]">
-                              <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-                              <span>Garansi Resmi &amp; Penyerahan Cepat</span>
-                            </div>
-
-                            <div>
-                              {isOut ? (
-                                <div
-                                  role="status"
-                                  aria-label={`${item.name} stok kosong`}
-                                  className="w-full sm:w-auto text-center py-3 px-6 rounded-xl bg-[#f8fafc] text-[#7a7b8f]/60 border border-[#7a7b8f]/20 font-medium text-sm cursor-not-allowed select-none"
-                                >
-                                  Stok Sedang Kosong
-                                </div>
-                              ) : (
-                                <WhatsAppTrigger
-                                  message={`Halo, Saya mau membeli ${item.name}. Apakah stock tersedia?`}
-                                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#0b2b51] hover:bg-[#3c4d70] text-white font-semibold text-sm px-6 py-3 rounded-xl shadow-[0_4px_16px_rgba(11,43,81,0.15)] transition-[background-color] duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3c4d70] cursor-pointer"
-                                >
-                                  <i className="fa-brands fa-whatsapp text-lg"></i>
-                                  <span>Pesan Sekarang via WhatsApp</span>
-                                </WhatsAppTrigger>
-                              )}
-                            </div>
+                          <div className="pt-4 border-t border-[#7a7b8f]/15 flex items-center justify-end">
+                            <WhatsAppTrigger
+                              message={`Halo, Saya mau membeli ${item.name}.`}
+                              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#0b2b51] hover:bg-[#3c4d70] text-white font-semibold text-sm px-6 py-3 rounded-xl shadow-[0_4px_16px_rgba(11,43,81,0.15)] transition-[background-color] duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3c4d70] cursor-pointer"
+                            >
+                              <i className="fa-brands fa-whatsapp text-lg"></i>
+                              <span>Pesan Sekarang via WhatsApp</span>
+                            </WhatsAppTrigger>
                           </div>
                         </div>
                       </div>
