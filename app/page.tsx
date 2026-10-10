@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import Image from "next/image";
+import Link from "next/link";
 import { WhatsAppTrigger } from "./whatsapp-contact";
 
 type ProductInput = {
@@ -46,9 +47,9 @@ export default function Home() {
       </a>
 
       <header className="w-full border-b border-[#7a7b8f]/20 py-4 sm:py-5 bg-white sticky top-0 z-40">
-        <div className="max-w-[1120px] mx-auto px-4 sm:px-6 flex items-center justify-between">
-          <a
-            href="#catalog"
+        <div className="max-w-[1120px] mx-auto px-4 sm:px-6 flex items-center justify-between gap-4">
+          <Link
+            href="/"
             className="inline-flex items-center text-decoration-none group select-none rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3c4d70] focus-visible:ring-offset-2"
           >
             <div className="flex flex-col">
@@ -56,15 +57,34 @@ export default function Home() {
                 keknya<span className="text-[#3c4d70]">Jualan</span>
               </span>
             </div>
-          </a>
+          </Link>
 
-          <WhatsAppTrigger
-            message="Halo Admin keknyaJualan, saya ingin tanya-tanya seputar produk digital"
-            className="inline-flex items-center gap-2 justify-center bg-[#0b2b51] hover:bg-[#3c4d70] text-white rounded-lg px-4 sm:px-5 py-2 font-medium text-xs sm:text-sm tracking-tight transition-[background-color] duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0b2b51] focus-visible:ring-offset-2 cursor-pointer"
-          >
-            <i className="fa-brands fa-whatsapp text-base sm:text-lg"></i>
-            <span>Chat WhatsApp</span>
-          </WhatsAppTrigger>
+          <div className="flex items-center gap-3 sm:gap-6">
+            <nav className="flex items-center gap-2 sm:gap-4 text-xs sm:text-sm font-semibold">
+              <Link
+                href="/"
+                className="text-[#0b2b51] font-bold py-1 px-2 rounded-md bg-[#fafbfc] border border-[#7a7b8f]/20"
+                aria-current="page"
+              >
+                Katalog
+              </Link>
+              <Link
+                href="/testimoni"
+                className="text-[#7a7b8f] hover:text-[#0b2b51] transition-colors py-1 px-2 rounded-md"
+              >
+                Testimoni
+              </Link>
+            </nav>
+
+            <WhatsAppTrigger
+              message="Halo Admin keknyaJualan, saya ingin tanya-tanya seputar produk digital"
+              className="inline-flex items-center gap-2 justify-center bg-[#0b2b51] hover:bg-[#3c4d70] text-white rounded-lg px-3.5 sm:px-5 py-2 font-medium text-xs sm:text-sm tracking-tight transition-[background-color] duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0b2b51] focus-visible:ring-offset-2 cursor-pointer flex-shrink-0"
+            >
+              <i className="fa-brands fa-whatsapp text-base sm:text-lg"></i>
+              <span className="hidden sm:inline">Chat WhatsApp</span>
+              <span className="sm:hidden">Chat</span>
+            </WhatsAppTrigger>
+          </div>
         </div>
       </header>
 
@@ -206,6 +226,34 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Transaction Proof Teaser Callout */}
+        <section className="mb-14 p-6 sm:p-8 rounded-2xl bg-[#fafbfc] border border-[#7a7b8f]/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 shadow-2xs">
+          <div className="flex items-start sm:items-center gap-4">
+            <div className="w-12 h-12 rounded-2xl bg-[#0b2b51] text-white flex items-center justify-center flex-shrink-0 shadow-xs">
+              <i className="fa-solid fa-camera text-lg"></i>
+            </div>
+            <div>
+              <div className="text-[11px] font-bold uppercase tracking-wider text-[#3c4d70] mb-0.5">
+                Bukti Transaksi Riil
+              </div>
+              <h2 className="font-display text-xl sm:text-2xl uppercase tracking-normal text-[#0b2b51]">
+                Lihat Bukti Transaksi &amp; Chat
+              </h2>
+              <p className="text-xs text-[#7a7b8f] mt-1">
+                Tangkapan layar asli percakapan WhatsApp dan bukti penyerahan akun maupun lisensi.
+              </p>
+            </div>
+          </div>
+
+          <Link
+            href="/testimoni"
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white border border-[#7a7b8f]/30 hover:border-[#0b2b51] text-[#0b2b51] hover:text-[#3c4d70] text-xs sm:text-sm font-bold shadow-2xs hover:shadow-xs transition-all flex-shrink-0 w-full sm:w-auto justify-center"
+          >
+            <span>Lihat Bukti Transaksi</span>
+            <i className="fa-solid fa-arrow-right text-xs"></i>
+          </Link>
+        </section>
+
         <section className="bg-[#fafbfc] rounded-2xl p-6 sm:p-10 border border-[#7a7b8f]/25 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 shadow-sm">
           <div className="max-w-xl">
             <h2 className="font-display text-2xl sm:text-3xl uppercase tracking-normal text-[#0b2b51] mb-2 text-balance">
@@ -230,6 +278,10 @@ export default function Home() {
         <div className="max-w-[1120px] mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#7a7b8f] font-medium">
           <div className="flex items-center gap-2">
             <span className="font-display text-base uppercase tracking-normal text-[#0b2b51]">keknyaJualan</span>
+            <span>·</span>
+            <Link href="/testimoni" className="hover:text-[#0b2b51] transition-colors">
+              Testimoni
+            </Link>
             <span>·</span>
             <span>Made by Myhli_</span>
           </div>
