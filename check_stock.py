@@ -3,10 +3,11 @@ import json
 import os
 import re
 import sys
+# pyrefly: ignore [missing-import]
 from telethon import TelegramClient
 from telethon.sessions import StringSession
 
-async def main():
+async def main():   
     api_id = os.getenv("TG_API_ID")
     api_hash = os.getenv("TG_API_HASH")
     session_str = os.getenv("TG_SESSION")
