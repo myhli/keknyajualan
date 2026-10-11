@@ -13,7 +13,7 @@ type AdminInfo = {
 
 const ADMINS: AdminInfo[] = [
   {
-    name: "Ilham",
+    name: "Myhli",
     role: "Admin 1",
     phone: "+62 831-4456-9056",
     waNumber: "6283144569056",
@@ -21,7 +21,7 @@ const ADMINS: AdminInfo[] = [
     bgClass: "bg-[#0b2b51]",
   },
   {
-    name: "Miftakh",
+    name: "Miifff",
     role: "Admin 2",
     phone: "+62 822-2045-2910",
     waNumber: "6282220452910",
